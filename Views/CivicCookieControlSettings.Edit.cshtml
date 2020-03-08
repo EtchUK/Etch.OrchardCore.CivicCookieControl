@@ -1,0 +1,28 @@
+﻿@using Etch.OrchardCore.CivicCookieControl.ViewModels
+
+@model CivicCookieControlSettingsViewModel
+
+<h3>@T["CIVIC Cookie Control Settings"]</h3>
+
+<div class="form-group row" asp-validation-class-for="ApiKey">
+    <div class="col-lg">
+        <label asp-for="ApiKey">@T["API Key"]</label>
+        <input asp-for="ApiKey" class="form-control" autocomplete="off" />
+        <span asp-validation-for="ApiKey"></span>
+        <span class="hint">@T["API key for your CIVIC Cookie Control license."]</span>
+    </div>
+</div>
+
+<div class="form-group row" asp-validation-class-for="Product">
+    <div class="col-lg">
+        <label asp-for="Product">@T["Product"]</label>
+        <select asp-for="Product" class="form-control col-sm-6" id="field-editor-select">
+            <option value="">Select product license</option>
+            <option value="COMMUNITY">Community</option>
+            <option value="PRO">Pro</option>
+            <option value="PRO_MULTISITE">Pro multi site</option>
+        </select>
+        <span asp-validation-for="Product"></span>
+        <span class="hint">@T["Product of your CIVIC Cookie Control license."]</span>
+    </div>
+</div>
