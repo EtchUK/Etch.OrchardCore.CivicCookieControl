@@ -35,6 +35,12 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
             {
                 model.ApiKey = settings.ApiKey;
                 model.Product = settings.Product;
+                model.Title = settings.Title;
+                model.Intro = settings.Intro;
+                model.NecessaryTitle = settings.NecessaryTitle;
+                model.NecessaryDescription = settings.NecessaryDescription;
+                model.ThirdPartyTitle = settings.ThirdPartyTitle;
+                model.ThirdPartyDescription = settings.ThirdPartyDescription;
             }).Location("Content:5").OnGroup(Constants.GroupId);
         }
 
@@ -56,6 +62,12 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 {
                     settings.ApiKey = model.ApiKey;
                     settings.Product = model.Product;
+                    settings.Title = model.Title;
+                    settings.Intro = model.Intro;
+                    settings.NecessaryTitle = model.NecessaryTitle;
+                    settings.NecessaryDescription = model.NecessaryDescription;
+                    settings.ThirdPartyTitle = model.ThirdPartyTitle;
+                    settings.ThirdPartyDescription = model.ThirdPartyDescription;
                 }
             }
             return await EditAsync(settings, context);

@@ -34,7 +34,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
 
                     if (settings?.IsValid ?? false)
                     {
-                        _scriptsCache = new HtmlString($"<script src=\"https://cc.cdn.civiccomputing.com/8/cookieControl-8.x.min.js\"></script><script>var config = {{ apiKey: '{settings.ApiKey}', product: '{settings.Product}', optionalCookies: [], }}; CookieControl.load( config );</script>");
+                        _scriptsCache = new HtmlString($"<script src=\"https://cc.cdn.civiccomputing.com/8/cookieControl-8.x.min.js\"></script><script>var config = {{ apiKey: '{settings.ApiKey}', product: '{settings.Product}', text: {{ title: '{settings.Title}', intro: '{settings.Intro}', necessaryTitle: '{settings.NecessaryTitle}', necessaryDescription: '{settings.NecessaryDescription}', thirdPartyTitle: '{settings.ThirdPartyTitle}', thirdPartyDescription: '{settings.ThirdPartyDescription}' }}, optionalCookies: [], }}; CookieControl.load( config );</script>");
                     }
                 }
 

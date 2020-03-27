@@ -2,27 +2,94 @@
 
 @model CivicCookieControlSettingsViewModel
 
-<h3>@T["CIVIC Cookie Control Settings"]</h3>
+<ul class="nav nav-tabs flex-column flex-md-row" role="tablist">
+    <li class="nav-item pr-md-2">
+        <a class="nav-item nav-link active" href="#tab-license" data-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-item nav-link" href="#tab-content" data-toggle="tab" role="tab" aria-controls="tab-content" aria-selected="false">Content</a>
+    </li>
+</ul>
 
-<div class="form-group row" asp-validation-class-for="ApiKey">
-    <div class="col-lg">
-        <label asp-for="ApiKey">@T["API Key"]</label>
-        <input asp-for="ApiKey" class="form-control" autocomplete="off" />
-        <span asp-validation-for="ApiKey"></span>
-        <span class="hint">@T["API key for your CIVIC Cookie Control license."]</span>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tab-license">
+        <div class="form-group row" asp-validation-class-for="ApiKey">
+            <div class="col-lg">
+                <label asp-for="ApiKey">@T["API Key"]</label>
+                <input asp-for="ApiKey" class="form-control" autocomplete="off" />
+                <span asp-validation-for="ApiKey"></span>
+                <span class="hint">@T["API key for your CIVIC Cookie Control license."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="Product">
+            <div class="col-lg">
+                <label asp-for="Product">@T["Product"]</label>
+                <select asp-for="Product" class="form-control col-sm-6" id="field-editor-select">
+                    <option value="">Select product license</option>
+                    <option value="COMMUNITY">Community</option>
+                    <option value="PRO">Pro</option>
+                    <option value="PRO_MULTISITE">Pro multi site</option>
+                </select>
+                <span asp-validation-for="Product"></span>
+                <span class="hint">@T["Product of your CIVIC Cookie Control license."]</span>
+            </div>
+        </div>
     </div>
-</div>
 
-<div class="form-group row" asp-validation-class-for="Product">
-    <div class="col-lg">
-        <label asp-for="Product">@T["Product"]</label>
-        <select asp-for="Product" class="form-control col-sm-6" id="field-editor-select">
-            <option value="">Select product license</option>
-            <option value="COMMUNITY">Community</option>
-            <option value="PRO">Pro</option>
-            <option value="PRO_MULTISITE">Pro multi site</option>
-        </select>
-        <span asp-validation-for="Product"></span>
-        <span class="hint">@T["Product of your CIVIC Cookie Control license."]</span>
+    <div class="tab-pane fade" id="tab-content">
+        <div class="form-group row" asp-validation-class-for="Title">
+            <div class="col-lg">
+                <label asp-for="Title">@T["Title"]</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title"></span>
+                <span class="hint">@T["Title displayed within cookie control dialog."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="Intro">
+            <div class="col-lg">
+                <label asp-for="Intro">@T["Intro"]</label>
+                <textarea asp-for="Intro" rows="5" class="form-control"></textarea>
+                <span asp-validation-for="Intro"></span>
+                <span class="hint">@T["Content displayed after title within cookie control dialog."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="NecessaryTitle">
+            <div class="col-lg">
+                <label asp-for="NecessaryTitle">@T["NecessaryTitle"]</label>
+                <input asp-for="NecessaryTitle" class="form-control" />
+                <span asp-validation-for="NecessaryTitle"></span>
+                <span class="hint">@T["Title displayed for necessary cookies section."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="NecessaryDescription">
+            <div class="col-lg">
+                <label asp-for="NecessaryDescription">@T["NecessaryDescription"]</label>
+                <textarea asp-for="NecessaryDescription" rows="5" class="form-control"></textarea>
+                <span asp-validation-for="NecessaryDescription"></span>
+                <span class="hint">@T["Explanation of necessary cookies."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="ThirdPartyTitle">
+            <div class="col-lg">
+                <label asp-for="ThirdPartyTitle">@T["ThirdPartyTitle"]</label>
+                <input asp-for="ThirdPartyTitle" class="form-control" />
+                <span asp-validation-for="ThirdPartyTitle"></span>
+                <span class="hint">@T["Title displayed for third party cookies section."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="ThirdPartyDescription">
+            <div class="col-lg">
+                <label asp-for="ThirdPartyDescription">@T["ThirdPartyDescription"]</label>
+                <textarea asp-for="ThirdPartyDescription" rows="5" class="form-control"></textarea>
+                <span asp-validation-for="ThirdPartyDescription"></span>
+                <span class="hint">@T["Explanation of third party cookies."]</span>
+            </div>
+        </div>
     </div>
 </div>
