@@ -1,4 +1,5 @@
-﻿using Etch.OrchardCore.CivicCookieControl.Settings;
+﻿using Etch.OrchardCore.CivicCookieControl.Service;
+using Etch.OrchardCore.CivicCookieControl.Settings;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -13,13 +14,15 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
 {
     public class CivicCookieControlFilter : IAsyncResultFilter
     {
+        private readonly ICookieControlSettingsService _cookieControlSettingsService;
         private readonly IResourceManager _resourceManager;
         private readonly ISiteService _siteService;
 
         private HtmlString _scriptsCache;
 
-        public CivicCookieControlFilter(IResourceManager resourceManager, ISiteService siteService)
+        public CivicCookieControlFilter(ICookieControlSettingsService cookieControlSettingsService, IResourceManager resourceManager, ISiteService siteService)
         {
+            _cookieControlSettingsService = cookieControlSettingsService;
             _resourceManager = resourceManager;
             _siteService = siteService;
         }
@@ -34,7 +37,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
 
                     if (settings?.IsValid ?? false)
                     {
-                        _scriptsCache = new HtmlString($"<script src=\"https://cc.cdn.civiccomputing.com/8/cookieControl-8.x.min.js\"></script><script>var config = {{ apiKey: '{settings.ApiKey}', product: '{settings.Product}', text: {{ title: '{settings.Title}', intro: '{settings.Intro}', necessaryTitle: '{settings.NecessaryTitle}', necessaryDescription: '{settings.NecessaryDescription}', thirdPartyTitle: '{settings.ThirdPartyTitle}', thirdPartyDescription: '{settings.ThirdPartyDescription}' }}, optionalCookies: [], }}; CookieControl.load( config );</script>");
+                        _scriptsCache = new HtmlString($"<script src=\"https://cc.cdn.civiccomputing.com/8/cookieControl-8.x.min.js\"></script><script>var config = {_cookieControlSettingsService.ToJson(settings)}; CookieControl.load( config );</script>");
                     }
                 }
 

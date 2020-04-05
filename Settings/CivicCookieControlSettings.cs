@@ -1,4 +1,8 @@
-﻿namespace Etch.OrchardCore.CivicCookieControl.Settings
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using OrchardCore.ContentManagement;
+using System.Collections.Generic;
+
+namespace Etch.OrchardCore.CivicCookieControl.Settings
 {
     public class CivicCookieControlSettings
     {
@@ -17,6 +21,13 @@
         public string NecessaryDescription { get; set; }
         public string ThirdPartyTitle { get; set; }
         public string ThirdPartyDescription { get; set; }
+
+        #endregion
+
+        #region Cookies
+
+        [BindNever]
+        public List<ContentItem> Cookies { get; } = new List<ContentItem>();
 
         #endregion
 

@@ -1,0 +1,126 @@
+{
+  "name": "Etch.OrchardCore.CivicCookieControl",
+  "displayName": "CIVIC Cookies",
+  "description": "Sets up content types for CIVIC cookie control",
+  "author": "Etch",
+  "website": "https://etchuk.com",
+  "version": "0.1.0",
+  "issetuprecipe": false,
+  "categories": [],
+  "tags": [ ],
+  "steps": [
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "RawCookie",
+          "DisplayName": "Raw Cookie",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Cookie"
+            },
+            "FullTextAspectSettings": {
+              "IncludeBodyAspect": false,
+              "IncludeDisplayText": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "RawCookie",
+              "Name": "RawCookie",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "RawCookie",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Name",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Name",
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Editor": "TextArea",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {},
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "ValuesField",
+              "Name": "Cookies",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Cookies",
+                  "Position": "3"
+                },
+                "ValuesFieldSettings": {
+                  "NewItemPlaceholder": "Enter cookie names"
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "CodeField",
+              "Name": "Accept",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Accept",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "CodeField",
+              "Name": "Revoke",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Revoke",
+                  "Position": "5"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

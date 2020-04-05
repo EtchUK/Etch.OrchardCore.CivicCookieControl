@@ -2,12 +2,29 @@
 
 @model CivicCookieControlSettingsViewModel
 
+@inject IContentManager ContentManager
+@inject OrchardCore.ContentManagement.Metadata.IContentDefinitionManager ContentDefinitionManager
+@inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
+
+@{
+    var widgetTemplatePlaceholderId = Html.Id("widgetTemplatePlaceholder");
+}
+
+<script asp-name="jQuery-ui" at="Foot"></script>
+
+<script asp-src="~/OrchardCore.Flows/Scripts/flows.edit.js" at="Foot" depends-on="admin"></script>
+<style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
+<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
+
 <ul class="nav nav-tabs flex-column flex-md-row" role="tablist">
     <li class="nav-item pr-md-2">
         <a class="nav-item nav-link active" href="#tab-license" data-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
     </li>
+    <li class="nav-item pr-md-2">
+        <a class="nav-item nav-link" href="#tab-text" data-toggle="tab" role="tab" aria-controls="tab-text" aria-selected="false">@T["Text"]</a>
+    </li>
     <li class="nav-item">
-        <a class="nav-item nav-link" href="#tab-content" data-toggle="tab" role="tab" aria-controls="tab-content" aria-selected="false">Content</a>
+        <a class="nav-item nav-link" href="#tab-cookies" data-toggle="tab" role="tab" aria-controls="tab-cookies" aria-selected="false">@T["Cookies"]</a>
     </li>
 </ul>
 
@@ -37,7 +54,7 @@
         </div>
     </div>
 
-    <div class="tab-pane fade" id="tab-content">
+    <div class="tab-pane fade" id="tab-text">
         <div class="form-group row" asp-validation-class-for="Title">
             <div class="col-lg">
                 <label asp-for="Title">@T["Title"]</label>
@@ -58,7 +75,7 @@
 
         <div class="form-group row" asp-validation-class-for="NecessaryTitle">
             <div class="col-lg">
-                <label asp-for="NecessaryTitle">@T["NecessaryTitle"]</label>
+                <label asp-for="NecessaryTitle">@T["Necessary Title"]</label>
                 <input asp-for="NecessaryTitle" class="form-control" />
                 <span asp-validation-for="NecessaryTitle"></span>
                 <span class="hint">@T["Title displayed for necessary cookies section."]</span>
@@ -67,7 +84,7 @@
 
         <div class="form-group row" asp-validation-class-for="NecessaryDescription">
             <div class="col-lg">
-                <label asp-for="NecessaryDescription">@T["NecessaryDescription"]</label>
+                <label asp-for="NecessaryDescription">@T["Necessary Description"]</label>
                 <textarea asp-for="NecessaryDescription" rows="5" class="form-control"></textarea>
                 <span asp-validation-for="NecessaryDescription"></span>
                 <span class="hint">@T["Explanation of necessary cookies."]</span>
@@ -76,7 +93,7 @@
 
         <div class="form-group row" asp-validation-class-for="ThirdPartyTitle">
             <div class="col-lg">
-                <label asp-for="ThirdPartyTitle">@T["ThirdPartyTitle"]</label>
+                <label asp-for="ThirdPartyTitle">@T["Third Party Title"]</label>
                 <input asp-for="ThirdPartyTitle" class="form-control" />
                 <span asp-validation-for="ThirdPartyTitle"></span>
                 <span class="hint">@T["Title displayed for third party cookies section."]</span>
@@ -85,11 +102,77 @@
 
         <div class="form-group row" asp-validation-class-for="ThirdPartyDescription">
             <div class="col-lg">
-                <label asp-for="ThirdPartyDescription">@T["ThirdPartyDescription"]</label>
+                <label asp-for="ThirdPartyDescription">@T["Third Party Description"]</label>
                 <textarea asp-for="ThirdPartyDescription" rows="5" class="form-control"></textarea>
                 <span asp-validation-for="ThirdPartyDescription"></span>
                 <span class="hint">@T["Explanation of third party cookies."]</span>
             </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-cookies">
+        <h5>@T["Cookies"] <span class="hint">@T["— Collection of cookies used on the site."]</span></h5>
+
+        <div class="form-group">
+            <div id="@widgetTemplatePlaceholderId" class="widget-template-placeholder">
+                @{ var htmlFieldPrefix = this.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix; }
+                @foreach (var widget in Model.Cookies)
+                {
+                    var prefix = Guid.NewGuid().ToString("n");
+                    <div class="widget-template">
+                        @{
+                            dynamic widgetEditor = await ContentItemDisplayManager.BuildEditorAsync(widget, Model.Updater, false, "", prefix);
+
+                            widgetEditor.PrefixesName = Html.NameFor(x => x.Prefixes);
+                            widgetEditor.ContentTypesName = Html.NameFor(x => x.ContentTypes);
+                            widgetEditor.TargetId = widgetTemplatePlaceholderId;
+
+                            widgetEditor.Metadata.Alternates.Add("Widget_Edit__Bag");
+                        }
+
+                        @await DisplayAsync(widgetEditor)
+
+                        @{ this.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix = htmlFieldPrefix; }
+                        <input type="hidden" asp-for="Prefixes" value="@prefix" />
+                        <input type="hidden" asp-for="ContentTypes" value="@widget.ContentType" />
+                    </div>
+                }
+            </div>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @T["Add Cookie"]
+                </button>
+                <div class="dropdown-menu">
+                    @foreach (var type in Model.CookieContentTypes)
+                    {
+                        <a class="dropdown-item add-widget  btn-sm"
+                           data-target-id="@widgetTemplatePlaceholderId"
+                           data-prefixes-name="@Html.NameFor(x => x.Prefixes)"
+                           data-contenttypes-name="@Html.NameFor(x => x.ContentTypes)"
+                           data-widget-type="@type.Name"
+                           data-flowmetadata="false"
+                           href="javascript:;">@type.DisplayName</a>
+                    }
+                </div>
+            </div>
+
+            <input type="hidden" id="buildEditorUrl" value="@Url.Action("BuildEditor", "Admin", new { area = "OrchardCore.Flows" })" />
+
+            @* Rendered only once per type to initialize the scripts its editor will need *@
+            @foreach (var type in Model.CookieContentTypes)
+            {
+                // Render a mock widget so that its resources are included in the page
+                var contentItem = await ContentManager.NewAsync(type.Name);
+                await DisplayAsync(await ContentItemDisplayManager.BuildEditorAsync(contentItem, Model.Updater, true, "", Guid.NewGuid().ToString("n")));
+            }
+
+            <script at="Foot">
+                $("#@widgetTemplatePlaceholderId").sortable({
+                    handle: ".widget-editor-header",
+                    cursor: "move"
+                });
+            </script>
         </div>
     </div>
 </div>

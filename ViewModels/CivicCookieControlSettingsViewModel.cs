@@ -1,4 +1,11 @@
-﻿namespace Etch.OrchardCore.CivicCookieControl.ViewModels
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Metadata.Models;
+using OrchardCore.DisplayManagement.ModelBinding;
+using System;
+using System.Collections.Generic;
+
+namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 {
     public class CivicCookieControlSettingsViewModel
     {
@@ -19,5 +26,19 @@
         public string ThirdPartyDescription { get; set; }
 
         #endregion
+
+        #region Cookie Properties
+
+        public IList<ContentItem> Cookies { get; set; }
+
+        public string[] Prefixes { get; set; } = Array.Empty<string>();
+        public string[] ContentTypes { get; set; } = Array.Empty<string>();
+
+        public IEnumerable<ContentTypeDefinition> CookieContentTypes { get; set; }
+
+        #endregion
+
+        [BindNever]
+        public IUpdateModel Updater { get; set; }
     }
 }

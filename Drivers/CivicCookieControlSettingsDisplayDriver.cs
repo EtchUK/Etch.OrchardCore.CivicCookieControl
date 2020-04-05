@@ -1,12 +1,18 @@
-﻿using Etch.OrchardCore.CivicCookieControl.Settings;
+﻿using Etch.OrchardCore.CivicCookieControl.Options;
+using Etch.OrchardCore.CivicCookieControl.Settings;
 using Etch.OrchardCore.CivicCookieControl.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
+using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Display;
+using OrchardCore.ContentManagement.Metadata;
+using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
-using OrchardCore.Environment.Shell;
 using OrchardCore.Settings;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.CivicCookieControl.Drivers
@@ -14,11 +20,17 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
     public class CivicCookieControlSettingsDisplayDriver : SectionDisplayDriver<ISite, CivicCookieControlSettings>
     {
         private readonly IAuthorizationService _authorizationService;
+        private readonly IContentManager _contentManager;
+        private readonly IContentDefinitionManager _contentDefinitionManager;
+        private readonly IContentItemDisplayManager _contentItemDisplayManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CivicCookieControlSettingsDisplayDriver(IAuthorizationService authorizationService, IHttpContextAccessor httpContextAccessor)
+        public CivicCookieControlSettingsDisplayDriver(IAuthorizationService authorizationService, IContentManager contentManager, IContentDefinitionManager contentDefinitionManager, IContentItemDisplayManager contentItemDisplayManager, IHttpContextAccessor httpContextAccessor)
         {
             _authorizationService = authorizationService;
+            _contentManager = contentManager;
+            _contentDefinitionManager = contentDefinitionManager;
+            _contentItemDisplayManager = contentItemDisplayManager;
             _httpContextAccessor = httpContextAccessor;
         }
 
@@ -41,6 +53,9 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.NecessaryDescription = settings.NecessaryDescription;
                 model.ThirdPartyTitle = settings.ThirdPartyTitle;
                 model.ThirdPartyDescription = settings.ThirdPartyDescription;
+                model.Cookies = settings.Cookies;
+
+                model.CookieContentTypes = _contentDefinitionManager.ListTypeDefinitions().Where(t => t.GetSettings<ContentTypeSettings>().Stereotype == "Cookie");
             }).Location("Content:5").OnGroup(Constants.GroupId);
         }
 
@@ -69,7 +84,19 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                     settings.ThirdPartyTitle = model.ThirdPartyTitle;
                     settings.ThirdPartyDescription = model.ThirdPartyDescription;
                 }
+
+                settings.Cookies.Clear();
+
+                for (var i = 0; i < model.Prefixes.Length; i++)
+                {
+                    var contentItem = await _contentManager.NewAsync(model.ContentTypes[i]);
+                    var widgetModel = await _contentItemDisplayManager.UpdateEditorAsync(contentItem, context.Updater, context.IsNew, htmlFieldPrefix: model.Prefixes[i]);
+
+                    settings.Cookies.Add(contentItem);
+                }
+
             }
+
             return await EditAsync(settings, context);
         }
     }
