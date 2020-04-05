@@ -45,6 +45,16 @@ namespace Etch.OrchardCore.CivicCookieControl.Service
 
             json["optionalCookies"] = CreateOptionalCookies(settings.Cookies);
 
+            if (settings.HasStatement)
+            {
+                json["statement"] = new JObject();
+
+                AddString((JObject)json["statement"], "description", settings.StatementDescription);
+                AddString((JObject)json["statement"], "name", settings.StatementName);
+                AddString((JObject)json["statement"], "url", settings.StatementUrl);
+                AddString((JObject)json["statement"], "updated", settings.StatementUpdated);
+            }
+
             return json.ToString();
         }
 

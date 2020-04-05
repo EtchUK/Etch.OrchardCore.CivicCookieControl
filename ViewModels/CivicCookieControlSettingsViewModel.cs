@@ -38,6 +38,15 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         #endregion
 
+        #region Statement Properties
+
+        public string StatementDescription { get; set; }
+        public string StatementName { get; set; }
+        public string StatementUrl { get; set; }
+        public string StatementUpdated { get; set; }
+
+        #endregion
+
         [BindNever]
         public IUpdateModel Updater { get; set; }
     }

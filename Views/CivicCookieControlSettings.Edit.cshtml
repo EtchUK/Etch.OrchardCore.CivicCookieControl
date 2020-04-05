@@ -23,8 +23,11 @@
     <li class="nav-item pr-md-2">
         <a class="nav-item nav-link" href="#tab-text" data-toggle="tab" role="tab" aria-controls="tab-text" aria-selected="false">@T["Text"]</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item pr-md-2">
         <a class="nav-item nav-link" href="#tab-cookies" data-toggle="tab" role="tab" aria-controls="tab-cookies" aria-selected="false">@T["Cookies"]</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-item nav-link" href="#tab-statement" data-toggle="tab" role="tab" aria-controls="tab-statement" aria-selected="false">@T["Statement"]</a>
     </li>
 </ul>
 
@@ -173,6 +176,46 @@
                     cursor: "move"
                 });
             </script>
+        </div>
+    </div>
+
+    <div class="tab-pane fade show active" id="tab-statement">
+        <p class="hint">@T["Statement will only show if all fields have a value."]</p>
+
+        <div class="form-group row" asp-validation-class-for="StatementName">
+            <div class="col-lg">
+                <label asp-for="StatementName">@T["Name"]</label>
+                <input asp-for="StatementName" class="form-control" />
+                <span asp-validation-for="StatementName"></span>
+                <span class="hint">@T["Text that you wish to call your terms by, for example Privacy Statement."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="StatementDescription">
+            <div class="col-lg">
+                <label asp-for="StatementDescription">@T["Description"]</label>
+                <textarea asp-for="StatementDescription" class="form-control"></textarea>
+                <span asp-validation-for="StatementDescription"></span>
+                <span class="hint">@T["Text description that introduces your Personal Information Policy."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="StatementUrl">
+            <div class="col-lg">
+                <label asp-for="StatementUrl">@T["URL"]</label>
+                <input asp-for="StatementUrl" class="form-control" />
+                <span asp-validation-for="StatementUrl"></span>
+                <span class="hint">@T["URL where your terms may be accessed."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="StatementUpdated">
+            <div class="col-lg">
+                <label asp-for="StatementUpdated">@T["Updated"]</label>
+                <input asp-for="StatementUpdated" class="form-control" maxlength="10" placeholder="dd/mm/yyyy" />
+                <span asp-validation-for="StatementUpdated"></span>
+                <span class="hint">@T["Date that your privacy statement was last issued, in the format of dd/mm/yyyy."]</span>
+            </div>
         </div>
     </div>
 </div>

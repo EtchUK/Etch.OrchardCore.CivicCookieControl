@@ -31,7 +31,27 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
 
         #endregion
 
+        #region Statement
+
+        public string StatementDescription { get; set; }
+        public string StatementName { get; set; }
+        public string StatementUrl { get; set; }
+        public string StatementUpdated { get; set; }
+
+        #endregion
+
         #region Helper Methods
+
+        public bool HasStatement
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(StatementDescription) &&
+                       !string.IsNullOrWhiteSpace(StatementName) &&
+                       !string.IsNullOrWhiteSpace(StatementUpdated) &&
+                       !string.IsNullOrWhiteSpace(StatementUrl);
+            }
+        }
 
         public bool IsValid
         {

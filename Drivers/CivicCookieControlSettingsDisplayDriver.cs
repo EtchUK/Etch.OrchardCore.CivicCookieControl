@@ -47,13 +47,20 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
             {
                 model.ApiKey = settings.ApiKey;
                 model.Product = settings.Product;
+
                 model.Title = settings.Title;
                 model.Intro = settings.Intro;
                 model.NecessaryTitle = settings.NecessaryTitle;
                 model.NecessaryDescription = settings.NecessaryDescription;
                 model.ThirdPartyTitle = settings.ThirdPartyTitle;
                 model.ThirdPartyDescription = settings.ThirdPartyDescription;
+
                 model.Cookies = settings.Cookies;
+
+                model.StatementDescription = settings.StatementDescription;
+                model.StatementName = settings.StatementName;
+                model.StatementUpdated = settings.StatementUpdated;
+                model.StatementUrl = settings.StatementUrl;
 
                 model.CookieContentTypes = _contentDefinitionManager.ListTypeDefinitions().Where(t => t.GetSettings<ContentTypeSettings>().Stereotype == "Cookie");
             }).Location("Content:5").OnGroup(Constants.GroupId);
@@ -77,12 +84,18 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 {
                     settings.ApiKey = model.ApiKey;
                     settings.Product = model.Product;
+
                     settings.Title = model.Title;
                     settings.Intro = model.Intro;
                     settings.NecessaryTitle = model.NecessaryTitle;
                     settings.NecessaryDescription = model.NecessaryDescription;
                     settings.ThirdPartyTitle = model.ThirdPartyTitle;
                     settings.ThirdPartyDescription = model.ThirdPartyDescription;
+
+                    settings.StatementDescription = model.StatementDescription;
+                    settings.StatementName = model.StatementName;
+                    settings.StatementUpdated = model.StatementUpdated;
+                    settings.StatementUrl = model.StatementUrl;
                 }
 
                 settings.Cookies.Clear();
@@ -90,11 +103,10 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 for (var i = 0; i < model.Prefixes.Length; i++)
                 {
                     var contentItem = await _contentManager.NewAsync(model.ContentTypes[i]);
-                    var widgetModel = await _contentItemDisplayManager.UpdateEditorAsync(contentItem, context.Updater, context.IsNew, htmlFieldPrefix: model.Prefixes[i]);
+                    await _contentItemDisplayManager.UpdateEditorAsync(contentItem, context.Updater, context.IsNew, htmlFieldPrefix: model.Prefixes[i]);
 
                     settings.Cookies.Add(contentItem);
                 }
-
             }
 
             return await EditAsync(settings, context);
