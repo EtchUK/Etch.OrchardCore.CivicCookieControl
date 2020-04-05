@@ -68,6 +68,13 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.StatementUpdated = settings.StatementUpdated;
                 model.StatementUrl = settings.StatementUrl;
 
+                model.Layout = settings.Layout;
+                model.Position = settings.Position;
+                model.Theme = settings.Theme;
+                model.ToggleType = settings.ToggleType;
+                model.CloseStyle = settings.CloseStyle;
+                model.SettingsStyle = settings.SettingsStyle;
+
                 model.CookieContentTypes = _contentDefinitionManager.ListTypeDefinitions().Where(t => t.GetSettings<ContentTypeSettings>().Stereotype == "Cookie");
             }).Location("Content:5").OnGroup(Constants.GroupId);
         }
@@ -108,6 +115,13 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                     settings.StatementName = model.StatementName;
                     settings.StatementUpdated = model.StatementUpdated;
                     settings.StatementUrl = model.StatementUrl;
+
+                    settings.Layout = model.Layout;
+                    settings.Position = model.Position;
+                    settings.Theme = model.Theme;
+                    settings.ToggleType = model.ToggleType;
+                    settings.CloseStyle = model.CloseStyle;
+                    settings.SettingsStyle = model.SettingsStyle;
                 }
 
                 settings.Cookies.Clear();

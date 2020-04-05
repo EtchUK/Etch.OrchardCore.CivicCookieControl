@@ -9,14 +9,14 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 {
     public class CivicCookieControlSettingsViewModel
     {
-        #region License Properties
+        #region License
 
         public string ApiKey { get; set; }
         public string Product { get; set; }
 
         #endregion
 
-        #region Behaviour Properties
+        #region Behaviour
 
         public string InitialState { get; set; }
         public bool NotifyOnce { get; set; }
@@ -26,7 +26,7 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         #endregion
 
-        #region Text Properties
+        #region Text
 
         public string Title { get; set; }
         public string Intro { get; set; }
@@ -37,7 +37,7 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         #endregion
 
-        #region Cookie Properties
+        #region Cookie
 
         public IList<ContentItem> Cookies { get; set; }
 
@@ -48,12 +48,23 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         #endregion
 
-        #region Statement Properties
+        #region Statement
 
         public string StatementDescription { get; set; }
         public string StatementName { get; set; }
         public string StatementUrl { get; set; }
         public string StatementUpdated { get; set; }
+
+        #endregion
+
+        #region Theme
+
+        public string Layout { get; set; }
+        public string Position { get; set; }
+        public string Theme { get; set; }
+        public string ToggleType { get; set; }
+        public string CloseStyle { get; set; }
+        public string SettingsStyle { get; set; }
 
         #endregion
 

@@ -36,7 +36,13 @@ namespace Etch.OrchardCore.CivicCookieControl.Service
                 ["notifyOnce"] = settings.NotifyOnce,
                 ["rejectButton"] = settings.RejectButton,
                 ["acceptBehaviour"] = settings.AcceptBehaviour,
-                ["closeOnGlobalChange"] = settings.CloseOnGlobalChange
+                ["closeOnGlobalChange"] = settings.CloseOnGlobalChange,
+                ["layout"] = settings.Layout,
+                ["position"] = settings.Position,
+                ["theme"] = settings.Theme,
+                ["toggleType"] = settings.ToggleType,
+                ["closeStyle"] = settings.CloseStyle,
+                ["settingsStyle"] = settings.SettingsStyle
             };
 
             json["text"] = new JObject();

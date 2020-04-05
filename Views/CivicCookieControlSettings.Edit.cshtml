@@ -29,8 +29,11 @@
     <li class="nav-item pr-md-2">
         <a class="nav-item nav-link" href="#tab-cookies" data-toggle="tab" role="tab" aria-controls="tab-cookies" aria-selected="false">@T["Cookies"]</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item pr-md-2">
         <a class="nav-item nav-link" href="#tab-statement" data-toggle="tab" role="tab" aria-controls="tab-statement" aria-selected="false">@T["Statement"]</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-item nav-link" href="#tab-appearance" data-toggle="tab" role="tab" aria-controls="tab-appearance" aria-selected="false">@T["Appearance"]</a>
     </li>
 </ul>
 
@@ -280,6 +283,87 @@
                 <input asp-for="StatementUpdated" class="form-control" maxlength="10" placeholder="dd/mm/yyyy" />
                 <span asp-validation-for="StatementUpdated"></span>
                 <span class="hint">@T["Date that your privacy statement was last issued, in the format of dd/mm/yyyy."]</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-appearance">
+        <div class="form-group row" asp-validation-class-for="Layout">
+            <div class="col-lg">
+                <label asp-for="Layout">@T["Layout"]</label>
+                <select asp-for="Layout" class="form-control col-sm-6">
+                    <option value="">Select layout</option>
+                    <option value="slideout">Slideout</option>
+                    <option value="popup">Popup</option>
+                </select>
+                <span asp-validation-for="Layout"></span>
+                <span class="hint">@T["Determines the display type and behaviour of Cookie Control."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="Position">
+            <div class="col-lg">
+                <label asp-for="Position">@T["Position"]</label>
+                <select asp-for="Position" class="form-control col-sm-6">
+                    <option value="">Select position</option>
+                    <option value="left">Left</option>
+                    <option value="right">Right</option>
+                </select>
+                <span asp-validation-for="Position"></span>
+                <span class="hint">@T["Determines the side of the display Cookie Control will occupy."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="Theme">
+            <div class="col-lg">
+                <label asp-for="Theme">@T["Theme"]</label>
+                <select asp-for="Theme" class="form-control col-sm-6">
+                    <option value="">Select theme</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+                <span asp-validation-for="Theme"></span>
+                <span class="hint">@T["Determines the appearance of Cookie Control."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="ToggleType">
+            <div class="col-lg">
+                <label asp-for="ToggleType">@T["Toggle Type"]</label>
+                <select asp-for="ToggleType" class="form-control col-sm-6">
+                    <option value="">Select toggle type</option>
+                    <option value="slider">Slider</option>
+                    <option value="checkbox">Checkbox</option>
+                </select>
+                <span asp-validation-for="ToggleType"></span>
+                <span class="hint">@T["Determines the control toggle for each optional cookie."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="CloseStyle">
+            <div class="col-lg">
+                <label asp-for="CloseStyle">@T["Close Style"]</label>
+                <select asp-for="CloseStyle" class="form-control col-sm-6">
+                    <option value="">Select close style</option>
+                    <option value="button">Button</option>
+                    <option value="icon">Icon</option>
+                    <option value="labelled">Labelled</option>
+                </select>
+                <span asp-validation-for="CloseStyle"></span>
+                <span class="hint">@T["Determines the closing behaviour of the module."]</span>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="SettingsStyle">
+            <div class="col-lg">
+                <label asp-for="SettingsStyle">@T["Settings Style"]</label>
+                <select asp-for="SettingsStyle" class="form-control col-sm-6">
+                    <option value="">Select settings style</option>
+                    <option value="button">Button</option>
+                    <option value="link">Link</option>
+                </select>
+                <span asp-validation-for="SettingsStyle"></span>
+                <span class="hint">@T["Determines the closing behaviour of the module."]</span>
             </div>
         </div>
     </div>

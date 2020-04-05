@@ -6,14 +6,14 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
 {
     public class CivicCookieControlSettings
     {
-        #region License Properties
+        #region License
 
         public string ApiKey { get; set; }
         public string Product { get; set; }
 
         #endregion
 
-        #region Behaviour Properties
+        #region Behaviour
 
         public string InitialState { get; set; } = "closed";
         public bool NotifyOnce { get; set; } = false;
@@ -23,7 +23,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
 
         #endregion
 
-        #region Text Properties
+        #region Text
 
         public string Title { get; set; }
         public string Intro { get; set; }
@@ -47,6 +47,17 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
         public string StatementName { get; set; }
         public string StatementUrl { get; set; }
         public string StatementUpdated { get; set; }
+
+        #endregion
+
+        #region Theme
+
+        public string Layout { get; set; } = "slideout";
+        public string Position { get; set; } = "right";
+        public string Theme { get; set; } = "dark";
+        public string ToggleType { get; set; } = "slider";
+        public string CloseStyle { get; set; } = "icon";
+        public string SettingsStyle { get; set; } = "button";
 
         #endregion
 
