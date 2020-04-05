@@ -13,6 +13,16 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
 
         #endregion
 
+        #region Behaviour Properties
+
+        public string InitialState { get; set; } = "closed";
+        public bool NotifyOnce { get; set; } = false;
+        public bool RejectButton { get; set; } = false;
+        public string AcceptBehaviour { get; set; } = "all";
+        public bool CloseOnGlobalChange { get; set; } = true;
+
+        #endregion
+
         #region Text Properties
 
         public string Title { get; set; }

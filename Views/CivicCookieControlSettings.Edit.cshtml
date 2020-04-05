@@ -21,6 +21,9 @@
         <a class="nav-item nav-link active" href="#tab-license" data-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
     </li>
     <li class="nav-item pr-md-2">
+        <a class="nav-item nav-link" href="#tab-behaviour" data-toggle="tab" role="tab" aria-controls="tab-behaviour" aria-selected="false">@T["Behaviour"]</a>
+    </li>
+    <li class="nav-item pr-md-2">
         <a class="nav-item nav-link" href="#tab-text" data-toggle="tab" role="tab" aria-controls="tab-text" aria-selected="false">@T["Text"]</a>
     </li>
     <li class="nav-item pr-md-2">
@@ -45,7 +48,7 @@
         <div class="form-group row" asp-validation-class-for="Product">
             <div class="col-lg">
                 <label asp-for="Product">@T["Product"]</label>
-                <select asp-for="Product" class="form-control col-sm-6" id="field-editor-select">
+                <select asp-for="Product" class="form-control col-sm-6">
                     <option value="">Select product license</option>
                     <option value="COMMUNITY">Community</option>
                     <option value="PRO">Pro</option>
@@ -53,6 +56,68 @@
                 </select>
                 <span asp-validation-for="Product"></span>
                 <span class="hint">@T["Product of your CIVIC Cookie Control license."]</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab-behaviour">
+        <div class="form-group row" asp-validation-class-for="InitialState">
+            <div class="col-lg">
+                <label asp-for="InitialState">@T["Initial State"]</label>
+                <select asp-for="InitialState" class="form-control col-sm-6">
+                    <option value="">Select initial state</option>
+                    <option value="open">Open</option>
+                    <option value="closed">Closed</option>
+                    <option value="notify">Notify</option>
+                    <option value="top">Top</option>
+                    <option value="box">Box</option>
+                </select>
+                <span asp-validation-for="InitialState"></span>
+                <span class="hint">@T["Determines the initial display state of Cookie Control."]</span>
+            </div>
+        </div>
+
+        <div class="form-group" asp-validation-class-for="NotifyOnce">
+            <label>Notify Once</label>
+            <div class="custom-control custom-checkbox">
+                <input asp-for="NotifyOnce" type="checkbox" class="custom-control-input" checked="@Model.NotifyOnce" />
+                <label class="custom-control-label" asp-for="NotifyOnce">
+                    <span class="hint">— Determines whether the module only shows its initial state once, or if it continues to replay on subsequent page loads until the user has directly interacted with it.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group" asp-validation-class-for="RejectButton">
+            <label>Reject Button</label>
+            <div class="custom-control custom-checkbox">
+                <input asp-for="RejectButton" type="checkbox" class="custom-control-input" checked="@Model.RejectButton" />
+                <label class="custom-control-label" asp-for="RejectButton">
+                    <span class="hint">— Determines whether the module shows a reject button alongside the accept button on the notification bar, or alongside the 'accept recommended settings' button when the panel is open.</span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group row" asp-validation-class-for="AcceptBehaviour">
+            <div class="col-lg">
+                <label asp-for="AcceptBehaviour">@T["Accept Behaviour"]</label>
+                <select asp-for="AcceptBehaviour" class="form-control col-sm-6">
+                    <option value="">Select accept behaviour</option>
+                    <option value="all">All</option>
+                    <option value="recommended">Recommended</option>
+                </select>
+                <span asp-validation-for="AcceptBehaviour"></span>
+                <span class="hint">@T["This property is used to control what will happen when the user clicks on either of the 'Accept' or 'Accept recommended settings' buttons."]</span>
+            </div>
+        </div>
+
+        <div class="form-group" asp-validation-class-for="CloseOnGlobalChange">
+            <label>Close on Global Change</label>
+
+            <div class="custom-control custom-checkbox">
+                <input asp-for="CloseOnGlobalChange" type="checkbox" class="custom-control-input" checked="@Model.CloseOnGlobalChange" />
+                <label class="custom-control-label" asp-for="CloseOnGlobalChange">
+                    <span class="hint">— Determines whether Cookie Control main window will remain open when the user clicks on either of the accept or reject buttons.</span>
+                </label>
             </div>
         </div>
     </div>
@@ -179,7 +244,7 @@
         </div>
     </div>
 
-    <div class="tab-pane fade show active" id="tab-statement">
+    <div class="tab-pane fade" id="tab-statement">
         <p class="hint">@T["Statement will only show if all fields have a value."]</p>
 
         <div class="form-group row" asp-validation-class-for="StatementName">

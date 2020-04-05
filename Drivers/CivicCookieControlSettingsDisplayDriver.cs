@@ -48,6 +48,12 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.ApiKey = settings.ApiKey;
                 model.Product = settings.Product;
 
+                model.InitialState = settings.InitialState;
+                model.NotifyOnce = settings.NotifyOnce;
+                model.RejectButton = settings.RejectButton;
+                model.AcceptBehaviour = settings.AcceptBehaviour;
+                model.CloseOnGlobalChange = settings.CloseOnGlobalChange;
+
                 model.Title = settings.Title;
                 model.Intro = settings.Intro;
                 model.NecessaryTitle = settings.NecessaryTitle;
@@ -84,6 +90,12 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 {
                     settings.ApiKey = model.ApiKey;
                     settings.Product = model.Product;
+
+                    settings.InitialState = model.InitialState;
+                    settings.NotifyOnce = model.NotifyOnce;
+                    settings.RejectButton = model.RejectButton;
+                    settings.AcceptBehaviour = model.AcceptBehaviour;
+                    settings.CloseOnGlobalChange = model.CloseOnGlobalChange;
 
                     settings.Title = model.Title;
                     settings.Intro = model.Intro;

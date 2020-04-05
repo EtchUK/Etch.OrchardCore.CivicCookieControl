@@ -16,6 +16,16 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         #endregion
 
+        #region Behaviour Properties
+
+        public string InitialState { get; set; }
+        public bool NotifyOnce { get; set; }
+        public bool RejectButton { get; set; }
+        public string AcceptBehaviour { get; set; }
+        public bool CloseOnGlobalChange { get; set; }
+
+        #endregion
+
         #region Text Properties
 
         public string Title { get; set; }

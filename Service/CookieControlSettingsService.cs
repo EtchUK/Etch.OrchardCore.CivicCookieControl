@@ -31,7 +31,12 @@ namespace Etch.OrchardCore.CivicCookieControl.Service
             var json = new JObject
             {
                 ["apiKey"] = settings.ApiKey,
-                ["product"] = settings.Product
+                ["product"] = settings.Product,
+                ["initialState"] = settings.InitialState,
+                ["notifyOnce"] = settings.NotifyOnce,
+                ["rejectButton"] = settings.RejectButton,
+                ["acceptBehaviour"] = settings.AcceptBehaviour,
+                ["closeOnGlobalChange"] = settings.CloseOnGlobalChange
             };
 
             json["text"] = new JObject();
