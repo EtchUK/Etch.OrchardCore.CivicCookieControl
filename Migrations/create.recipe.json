@@ -44,6 +44,27 @@
               }
             }
           ]
+        },
+        {
+          "Name": "GoogleAnalyticsCookie",
+          "DisplayName": "Google Analytics Cookie",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Cookie"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "GoogleAnalyticsCookie",
+              "Name": "GoogleAnalyticsCookie",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -116,6 +137,55 @@
                   "DisplayName": "Revoke",
                   "Position": "5"
                 }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "GoogleAnalyticsCookie",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Editor": "TextArea",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Will use sensible default if left blank."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "If left blank will default to \"Analytical Cookies\"."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TrackingCode",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Tracking Code",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Google Analytics ID (e.g. UA-XXXXX-Y)."
+                },
+                "ContentIndexSettings": {}
               }
             }
           ]

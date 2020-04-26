@@ -1,10 +1,11 @@
-﻿using Etch.OrchardCore.CivicCookieControl.Cookies;
+﻿using Etch.OrchardCore.CivicCookieControl.CookieTypes;
 using Etch.OrchardCore.CivicCookieControl.Drivers;
 using Etch.OrchardCore.CivicCookieControl.Filters;
 using Etch.OrchardCore.CivicCookieControl.Helpers;
 using Etch.OrchardCore.CivicCookieControl.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.Data.Migration;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Modules;
 using OrchardCore.Navigation;
@@ -21,8 +22,10 @@ namespace Etch.OrchardCore.CivicCookieControl
             services.AddScoped<IDisplayDriver<ISite>, CivicCookieControlSettingsDisplayDriver>();
             services.AddScoped<INavigationProvider, AdminMenu>();
             services.AddScoped<ICookieControlSettingsService, CookieControlSettingsService>();
+            services.AddScoped<IDataMigration, Migrations>();
 
             services.AddCookieType<RawCookie>();
+            services.AddCookieType<GoogleAnalyticsCookie>();
 
             services.Configure<MvcOptions>((options) =>
             {

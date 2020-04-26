@@ -1,10 +1,11 @@
-﻿using Etch.OrchardCore.Fields.Code.Fields;
+﻿using Etch.OrchardCore.CivicCookieControl.Cookies;
+using Etch.OrchardCore.Fields.Code.Fields;
 using Etch.OrchardCore.Fields.Values.Fields;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
 
-namespace Etch.OrchardCore.CivicCookieControl.Cookies
+namespace Etch.OrchardCore.CivicCookieControl.CookieTypes
 {
     public class RawCookie : ICookieType
     {
