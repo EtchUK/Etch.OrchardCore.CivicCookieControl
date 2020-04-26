@@ -65,6 +65,27 @@
               }
             }
           ]
+        },
+        {
+          "Name": "FacebookPixelCookie",
+          "DisplayName": "Facebook Pixel Cookie",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "Cookie"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "FacebookPixelCookie",
+              "Name": "FacebookPixelCookie",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
         }
       ],
       "ContentParts": [
@@ -184,6 +205,55 @@
                 },
                 "TextFieldSettings": {
                   "Hint": "Google Analytics ID (e.g. UA-XXXXX-Y)."
+                },
+                "ContentIndexSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "FacebookPixelCookie",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "Label",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Label",
+                  "Position": "1"
+                },
+                "TextFieldSettings": {
+                  "Hint": "If left empty, will default to \"Marketing Cookies\"."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "Description",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Description",
+                  "Editor": "TextArea",
+                  "Position": "2"
+                },
+                "TextFieldSettings": {
+                  "Hint": "If left empty, sensible default will be used."
+                },
+                "ContentIndexSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "PixelID",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Pixel ID",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Hint": "Facebook pixel ID."
                 },
                 "ContentIndexSettings": {}
               }

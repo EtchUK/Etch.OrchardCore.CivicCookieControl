@@ -24,8 +24,9 @@ namespace Etch.OrchardCore.CivicCookieControl
             services.AddScoped<ICookieControlSettingsService, CookieControlSettingsService>();
             services.AddScoped<IDataMigration, Migrations>();
 
-            services.AddCookieType<RawCookie>();
+            services.AddCookieType<FacebookPixelCookie>();
             services.AddCookieType<GoogleAnalyticsCookie>();
+            services.AddCookieType<RawCookie>();
 
             services.Configure<MvcOptions>((options) =>
             {
