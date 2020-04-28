@@ -18,7 +18,9 @@ Alternatively, [download the source](https://github.com/etchuk/Etch.OrchardCore.
 
 ## Usage
 
-Once a reference to this module has been configured there will be a "CIVIC Cookie Control" feature available within the CMS instance. Enabling this feature will add a new menu option to the settings for configuring your CIVIC Cookie Control code snippet ("Configuration" -> "Settings" -> "CIVIC Cookie Control").
+First step is to go to the [CIVIC site](https://www.civicuk.com/cookie-control/download) and create a license. The cookie control won't work until you've got a API key and configured the domain(s) that will use the key.
+
+Once a reference to this module has been configured there will be a "CIVIC Cookie Control" feature available within the CMS instance. Enabling this feature will add a new menu option to the settings for configuring your CIVIC Cookie Control code snippet ("Configuration" -> "Settings" -> "CIVIC Cookie Control"). The cookie control will only show on the front-end your site when a valid API key and product have been applied to the settings.
 
 ## Custom Cookie Types
 
