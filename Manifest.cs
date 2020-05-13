@@ -9,7 +9,8 @@ using OrchardCore.Modules.Manifest;
     Website = "https://etchuk.com",
     Dependencies = new[]
     {
-        "Etch.OrchardCore.Fields.CodeField",
-        "OrchardCore.ContentFields"
+        "Etch.OrchardCore.Fields.Code",
+        "Etch.OrchardCore.Fields.Values",
+        "OrchardCore.ContentFields",
     }
 )]
