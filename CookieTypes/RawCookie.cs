@@ -4,6 +4,7 @@ using Etch.OrchardCore.Fields.Values.Fields;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentFields.Fields;
 using OrchardCore.ContentManagement;
+using System;
 
 namespace Etch.OrchardCore.CivicCookieControl.CookieTypes
 {
@@ -20,8 +21,8 @@ namespace Etch.OrchardCore.CivicCookieControl.CookieTypes
             json["label"] = part.Get<TextField>("Label")?.Text;
             json["description"] = part.Get<TextField>("Description")?.Text;
             json["cookies"] = new JArray(part.Get<ValuesField>("Cookies")?.Data);
-            json["onAccept"] = new JRaw($"function () {{ {part.Get<CodeField>("Accept")?.Value} }}");
-            json["onRevoke"] = new JRaw($"function () {{ {part.Get<CodeField>("Revoke")?.Value} }}");
+            json["onAccept"] = new JRaw($"function () {{ {part.Get<CodeField>("Accept")?.Value}{Environment.NewLine} }}");
+            json["onRevoke"] = new JRaw($"function () {{ {part.Get<CodeField>("Revoke")?.Value}{Environment.NewLine} }}");
 
             return json;
         }
