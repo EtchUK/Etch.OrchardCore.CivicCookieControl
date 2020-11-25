@@ -62,6 +62,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.ThirdPartyDescription = settings.ThirdPartyDescription;
 
                 model.Cookies = settings.Cookies;
+                model.Subdomains = settings.Subdomains;
 
                 model.StatementDescription = settings.StatementDescription;
                 model.StatementName = settings.StatementName;
@@ -122,6 +123,8 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                     settings.ToggleType = model.ToggleType;
                     settings.CloseStyle = model.CloseStyle;
                     settings.SettingsStyle = model.SettingsStyle;
+
+                    settings.Subdomains = model.Subdomains;
                 }
 
                 settings.Cookies.Clear();
