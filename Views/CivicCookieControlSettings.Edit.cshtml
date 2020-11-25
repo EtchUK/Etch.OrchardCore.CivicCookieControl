@@ -187,6 +187,16 @@
     </div>
 
     <div class="tab-pane fade" id="tab-cookies">
+        <div class="form-group" asp-validation-class-for="NotifyOnce">
+            <label>Subdomains</label>
+            <div class="custom-control custom-checkbox">
+                <input asp-for="Subdomains" type="checkbox" class="custom-control-input" checked="@Model.Subdomains" />
+                <label class="custom-control-label" asp-for="Subdomains">
+                    <span class="hint">— Determines whether Cookie Control's own cookie is saved to the top level domain, and therefore accessible on all sub domains, or disabled and saved only to the request host..</span>
+                </label>
+            </div>
+        </div>
+
         <h5>@T["Cookies"] <span class="hint">@T["— Collection of cookies used on the site."]</span></h5>
 
         <div class="form-group">
@@ -217,8 +227,7 @@
                         ContentTypesId: Html.IdFor(x => x.ContentTypes),
                         ContentTypesName: Html.NameFor(x => x.ContentTypes)
                     );
-                    @await DisplayAsync(contentCard)
-                }
+    @await DisplayAsync(contentCard)}
             </div>
 
             <div class="btn-group">
@@ -228,16 +237,15 @@
                 <div class="dropdown-menu">
                     @foreach (var type in Model.CookieContentTypes)
                     {
-                        <a class="dropdown-item add-widget  btn-sm"
-                           data-target-id="@widgetTemplatePlaceholderId"
-                           data-prefixes-name="@Html.NameFor(x => x.Prefixes)"
-                           data-contenttypes-name="@Html.NameFor(x => x.ContentTypes)"
-                           data-widget-type="@type.Name"
-                           data-flowmetadata="false"
-                           data-parent-content-type="@nameof(CivicCookieControlSettings)"
-                           data-part-name="Cookies"
-                           href="javascript:;">@type.DisplayName</a>
-                    }
+        <a class="dropdown-item add-widget  btn-sm"
+           data-target-id="@widgetTemplatePlaceholderId"
+           data-prefixes-name="@Html.NameFor(x => x.Prefixes)"
+           data-contenttypes-name="@Html.NameFor(x => x.ContentTypes)"
+           data-widget-type="@type.Name"
+           data-flowmetadata="false"
+           data-parent-content-type="@nameof(CivicCookieControlSettings)"
+           data-part-name="Cookies"
+           href="javascript:;">@type.DisplayName</a>}
                 </div>
             </div>
 

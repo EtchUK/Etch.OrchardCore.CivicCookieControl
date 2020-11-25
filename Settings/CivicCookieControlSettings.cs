@@ -39,6 +39,8 @@ namespace Etch.OrchardCore.CivicCookieControl.Settings
         [BindNever]
         public List<ContentItem> Cookies { get; } = new List<ContentItem>();
 
+        public bool Subdomains { get; set; } = true;
+
         #endregion
 
         #region Statement

@@ -42,7 +42,8 @@ namespace Etch.OrchardCore.CivicCookieControl.Service
                 ["theme"] = settings.Theme,
                 ["toggleType"] = settings.ToggleType,
                 ["closeStyle"] = settings.CloseStyle,
-                ["settingsStyle"] = settings.SettingsStyle
+                ["settingsStyle"] = settings.SettingsStyle,
+                ["subDomains"] = settings.Subdomains
             };
 
             json["text"] = new JObject();
