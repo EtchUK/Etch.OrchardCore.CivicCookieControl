@@ -21,16 +21,14 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         public Task BuildNavigationAsync(string name, NavigationBuilder builder)
         {
-            if (String.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
             {
                 builder.Add(S["Configuration"], configuration => configuration
-                        .Add(S["Settings"], settings => settings
-                            .Add(S["CIVIC Cookie Control"], S["CIVIC Cookie Control"], settings => settings
-                            .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = Constants.GroupId })
-                                .Permission(Permissions.ManageCivicCookieControlSettings)
-                                .LocalNav())
-                            )
-                        );
+                    .Add(S["CIVIC Cookie Control"], S["CIVIC Cookie Control"], settings => settings
+                    .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = Constants.GroupId })
+                        .Permission(Permissions.ManageCivicCookieControlSettings)
+                        .LocalNav())
+                );
             }
             return Task.CompletedTask;
         }
