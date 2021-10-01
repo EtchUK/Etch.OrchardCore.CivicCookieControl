@@ -77,6 +77,8 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.SettingsStyle = settings.SettingsStyle;
 
                 model.CookieContentTypes = _contentDefinitionManager.ListTypeDefinitions().Where(t => t.GetSettings<ContentTypeSettings>().Stereotype == "Cookie");
+
+                model.Updater = context.Updater;
             }).Location("Content:5").OnGroup(Constants.GroupId);
         }
 
