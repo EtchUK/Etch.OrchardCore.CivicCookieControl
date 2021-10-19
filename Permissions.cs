@@ -1,7 +1,6 @@
 ﻿using OrchardCore.Security.Permissions;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.CivicCookieControl
 {
@@ -9,13 +8,9 @@ namespace Etch.OrchardCore.CivicCookieControl
     {
         public static readonly Permission ManageCivicCookieControlSettings = new Permission(nameof(ManageCivicCookieControlSettings), "Manage CIVIC Cookie Control settings");
 
-        public Task<IEnumerable<Permission>> GetPermissionsAsync()
+        public IEnumerable<Permission> GetPermissions()
         {
-            return Task.FromResult(new[]
-            {
-                    ManageCivicCookieControlSettings
-                }
-            .AsEnumerable());
+            return new[] { ManageCivicCookieControlSettings }.AsEnumerable();
         }
 
         public IEnumerable<PermissionStereotype> GetDefaultStereotypes()

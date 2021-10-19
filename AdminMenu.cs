@@ -19,12 +19,11 @@ namespace Etch.OrchardCore.CivicCookieControl
             if (string.Equals(name, "admin", StringComparison.OrdinalIgnoreCase))
             {
                 builder.Add(S["Configuration"], configuration => configuration
-                    .Add(S["CIVIC Cookie Control"], S["CIVIC Cookie Control"].PrefixPosition(), settings => settings
-                    .AddClass("cookie").Id("cookie")
+                    .Add(S["CIVIC Cookie Control"], S["CIVIC Cookie Control"], layers => layers
                     .Action("Index", "Admin", new { area = "OrchardCore.Settings", groupId = Constants.GroupId })
                         .Permission(Permissions.ManageCivicCookieControlSettings)
                         .LocalNav())
-                );
+                    );
             }
             return Task.CompletedTask;
         }

@@ -16,9 +16,7 @@
           "Name": "RawCookie",
           "DisplayName": "Raw Cookie",
           "Settings": {
-            "ContentTypeSettings": {
-              "Stereotype": "Cookie"
-            },
+            "Stereotype": "Cookie",
             "FullTextAspectSettings": {
               "IncludeBodyAspect": false,
               "IncludeDisplayText": false
@@ -29,18 +27,14 @@
               "PartName": "RawCookie",
               "Name": "RawCookie",
               "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "1"
-                }
+                "Position": "1"
               }
             },
             {
               "PartName": "TitlePart",
               "Name": "TitlePart",
               "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                }
+                "Position": "0"
               }
             }
           ]
@@ -49,9 +43,7 @@
           "Name": "GoogleAnalyticsCookie",
           "DisplayName": "Google Analytics Cookie",
           "Settings": {
-            "ContentTypeSettings": {
-              "Stereotype": "Cookie"
-            },
+            "Stereotype": "Cookie",
             "FullTextAspectSettings": {}
           },
           "ContentTypePartDefinitionRecords": [
@@ -59,9 +51,7 @@
               "PartName": "GoogleAnalyticsCookie",
               "Name": "GoogleAnalyticsCookie",
               "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                }
+                "Position": "0"
               }
             }
           ]
@@ -70,9 +60,7 @@
           "Name": "FacebookPixelCookie",
           "DisplayName": "Facebook Pixel Cookie",
           "Settings": {
-            "ContentTypeSettings": {
-              "Stereotype": "Cookie"
-            },
+            "Stereotype": "Cookie",
             "FullTextAspectSettings": {}
           },
           "ContentTypePartDefinitionRecords": [
@@ -80,9 +68,7 @@
               "PartName": "FacebookPixelCookie",
               "Name": "FacebookPixelCookie",
               "Settings": {
-                "ContentTypePartSettings": {
-                  "Position": "0"
-                }
+                "Position": "0"
               }
             }
           ]
@@ -97,43 +83,33 @@
               "FieldName": "TextField",
               "Name": "Name",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Name",
-                  "Position": "0"
-                }
+                "DisplayName": "Name",
+                "Position": "0"
               }
             },
             {
               "FieldName": "TextField",
               "Name": "Label",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label",
-                  "Position": "1"
-                }
+                "DisplayName": "Label",
+                "Position": "1"
               }
             },
             {
               "FieldName": "TextField",
               "Name": "Description",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Description",
-                  "Editor": "TextArea",
-                  "Position": "2"
-                },
-                "TextFieldSettings": {},
-                "ContentIndexSettings": {}
+                "DisplayName": "Description",
+                "Editor": "TextArea",
+                "Position": "2"
               }
             },
             {
               "FieldName": "ValuesField",
               "Name": "Cookies",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Cookies",
-                  "Position": "3"
-                },
+                "DisplayName": "Cookies",
+                "Position": "3",
                 "ValuesFieldSettings": {
                   "NewItemPlaceholder": "Enter cookie names"
                 },
@@ -144,20 +120,16 @@
               "FieldName": "CodeField",
               "Name": "Accept",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Accept",
-                  "Position": "4"
-                }
+                "DisplayName": "Accept",
+                "Position": "4"
               }
             },
             {
               "FieldName": "CodeField",
               "Name": "Revoke",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Revoke",
-                  "Position": "5"
-                }
+                "DisplayName": "Revoke",
+                "Position": "5"
               }
             }
           ]
@@ -170,14 +142,10 @@
               "FieldName": "TextField",
               "Name": "Description",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Description",
-                  "Editor": "TextArea",
-                  "Position": "2"
-                },
-                "TextFieldSettings": {
-                  "Hint": "Will use sensible default if left blank."
-                },
+                "DisplayName": "Description",
+                "Editor": "TextArea",
+                "Position": "2",
+                "Hint": "Will use sensible default if left blank.",
                 "ContentIndexSettings": {}
               }
             },
@@ -185,13 +153,9 @@
               "FieldName": "TextField",
               "Name": "Label",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label",
-                  "Position": "1"
-                },
-                "TextFieldSettings": {
-                  "Hint": "If left blank will default to \"Analytical Cookies\"."
-                },
+                "DisplayName": "Label",
+                "Position": "1",
+                "Hint": "If left blank will default to \"Analytical Cookies\".",
                 "ContentIndexSettings": {}
               }
             },
@@ -199,13 +163,9 @@
               "FieldName": "TextField",
               "Name": "TrackingCode",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Tracking Code",
-                  "Position": "0"
-                },
-                "TextFieldSettings": {
-                  "Hint": "Google Analytics ID (e.g. UA-XXXXX-Y)."
-                },
+                "DisplayName": "Tracking Code",
+                "Position": "0",
+                "Hint": "Google Analytics ID (e.g. UA-XXXXX-Y).",
                 "ContentIndexSettings": {}
               }
             }
@@ -219,13 +179,9 @@
               "FieldName": "TextField",
               "Name": "Label",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Label",
-                  "Position": "1"
-                },
-                "TextFieldSettings": {
-                  "Hint": "If left empty, will default to \"Marketing Cookies\"."
-                },
+                "DisplayName": "Label",
+                "Position": "1",
+                "Hint": "If left empty, will default to \"Marketing Cookies\".",
                 "ContentIndexSettings": {}
               }
             },
@@ -233,14 +189,10 @@
               "FieldName": "TextField",
               "Name": "Description",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Description",
-                  "Editor": "TextArea",
-                  "Position": "2"
-                },
-                "TextFieldSettings": {
-                  "Hint": "If left empty, sensible default will be used."
-                },
+                "DisplayName": "Description",
+                "Editor": "TextArea",
+                "Position": "2",
+                "Hint": "If left empty, sensible default will be used.",
                 "ContentIndexSettings": {}
               }
             },
@@ -248,13 +200,9 @@
               "FieldName": "TextField",
               "Name": "PixelID",
               "Settings": {
-                "ContentPartFieldSettings": {
-                  "DisplayName": "Pixel ID",
-                  "Position": "0"
-                },
-                "TextFieldSettings": {
-                  "Hint": "Facebook pixel ID."
-                },
+                "DisplayName": "Pixel ID",
+                "Position": "0",
+                "Hint": "Facebook pixel ID.",
                 "ContentIndexSettings": {}
               }
             }
