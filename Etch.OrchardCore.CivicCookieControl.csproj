@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2-beta3</Version>
+    <Version>1.0.3-beta3</Version>
     <PackageId>Etch.OrchardCore.CivicCookieControl</PackageId>
     <Title>CIVIC Cookie Control</Title>
     <Authors>Etch UK Ltd.</Authors>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Etch.OrchardCore.Fields" Version="0.8.1-beta3" />
+    <PackageReference Include="Etch.OrchardCore.Fields" Version="0.8.2-beta3" />
     <PackageReference Include="OrchardCore.Admin" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.ContentFields" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta3-71077" />
@@ -22,5 +22,10 @@
     <PackageReference Include="OrchardCore.Navigation" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.ResourceManagement" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.0.0-beta3-71077" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.TagHelpers" Version="2.2.0" />
   </ItemGroup>
 </Project>
