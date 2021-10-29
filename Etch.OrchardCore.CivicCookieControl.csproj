@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Etch.OrchardCore.Fields" Version="0.8.2-beta3" />
+    <PackageReference Include="Etch.OrchardCore.Fields" Version="0.7.0-beta3" />
     <PackageReference Include="OrchardCore.Admin" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.ContentFields" Version="1.0.0-beta3-71077" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="1.0.0-beta3-71077" />
