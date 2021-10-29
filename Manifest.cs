@@ -5,7 +5,7 @@ using OrchardCore.Modules.Manifest;
     Category = "Content",
     Description = "Add Cookie Control by CIVIC.",
     Name = "CIVIC Cookie Control",
-    Version = "1.0.3",
+    Version = "1.0.4",
     Website = "https://etchuk.com",
     Dependencies = new[]
     {
