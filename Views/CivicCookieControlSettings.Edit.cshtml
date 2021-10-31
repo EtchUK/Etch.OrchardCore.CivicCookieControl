@@ -8,18 +8,17 @@
 @inject OrchardCore.ContentManagement.Metadata.IContentDefinitionManager ContentDefinitionManager
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
 
-@{
-    var widgetTemplatePlaceholderId = Html.Id("widgetTemplatePlaceholder");
-}
+@{ var widgetTemplatePlaceholderId = Html.Id("widgetTemplatePlaceholder"); }
 
 <script asp-name="jQuery-ui" at="Foot"></script>
 
-<script asp-src="~/OrchardCore.Flows/Scripts/flows.edit.min.js"
-        debug-src="~/OrchardCore.Flows/Scripts/flows.edit.js" at="Foot" depends-on="admin"></script>
+<script asp-src="~/Etch.OrchardCore.AdminTheme/Scripts/flows.edit.js" at="Foot" depends-on="admin" asp-append-version="true"></script>
 <style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.min.css"
        debug-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
-<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.min.css"
-       debug-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
+<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.css"
+       debug-src="~/OrchardCore.Flows/Styles/flows.edit.min.css"></style>
+<style asp-src="~/Etch.OrchardCore.AdminTheme/Styles/flows.edit.css" asp-append-version="true"></style>
+<script asp-src="~/Etch.OrchardCore.AdminTheme/Scripts/widget-picker.js" at="Foot" depends-on="admin" asp-append-version="true"></script>
 
 <ul class="nav nav-tabs flex-column flex-md-row" role="tablist">
     <li class="nav-item pr-md-2">
@@ -201,9 +200,7 @@
 
         <div class="form-group">
             <div id="@widgetTemplatePlaceholderId" class="widget-template-placeholder widget-template-placeholder-cookies row mx-0" data-buildeditorurl="@Url.Action("BuildEditor", "Admin", new { area = "OrchardCore.Flows" })">
-                @{ 
-                    var htmlFieldPrefix = this.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix; 
-                }
+                @{ var htmlFieldPrefix = this.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix; }
 
                 @foreach (var widget in Model.Cookies)
                 {
@@ -231,8 +228,7 @@
                         ContentTypesName: Html.NameFor(x => x.ContentTypes)
                     );
 
-                    @await DisplayAsync(contentCard)
-                }
+                    @await DisplayAsync(contentCard)}
             </div>
 
             <div class="btn-group">
@@ -250,23 +246,9 @@
                            data-flowmetadata="false"
                            data-parent-content-type="@nameof(CivicCookieControlSettings)"
                            data-part-name="Cookies"
-                           href="javascript:;">@type.DisplayName</a>
-                    }
+                           href="javascript:;">@type.DisplayName</a>}
                 </div>
             </div>
-
-            @* Rendered only once per type to initialize the scripts its editor will need *@
-            @foreach (var type in Model.CookieContentTypes)
-            {
-                    @if (Context.Items["CivicCookieSettings.Edit" + type.Name] == null)
-                    {
-                        Context.Items["CivicCookieSettings.Edit" + type.Name] = new object();
-
-                        // Render a mock widget so that its resources are included in the page
-                        var contentItem = await ContentManager.NewAsync(type.Name);
-                        await DisplayAsync(await ContentItemDisplayManager.BuildEditorAsync(contentItem, Model.Updater, true));
-                    }
-            }
 
             <script at="Foot">
             @*Only apply sortable if element is present in dom, do not call sortable on scripts for mock widgets *@
