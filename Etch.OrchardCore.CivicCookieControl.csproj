@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.4-beta3</Version>
+    <Version>1.0.5-beta3</Version>
     <PackageId>Etch.OrchardCore.CivicCookieControl</PackageId>
     <Title>CIVIC Cookie Control</Title>
     <Authors>Etch UK Ltd.</Authors>
