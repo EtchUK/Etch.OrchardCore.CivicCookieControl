@@ -1,6 +1,4 @@
-﻿@using Etch.OrchardCore.CivicCookieControl.Settings
-@using Etch.OrchardCore.CivicCookieControl.ViewModels
-@using OrchardCore.Flows.Models
+﻿@using Etch.OrchardCore.CivicCookieControl.ViewModels
 
 @model CivicCookieControlSettingsViewModel
 
@@ -14,12 +12,9 @@
 
 <script asp-name="jQuery-ui" at="Foot"></script>
 
-<script asp-src="~/OrchardCore.Flows/Scripts/flows.edit.min.js"
-        debug-src="~/OrchardCore.Flows/Scripts/flows.edit.js" at="Foot" depends-on="admin"></script>
-<style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.min.css"
-       debug-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
-<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.min.css"
-       debug-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
+<script asp-src="~/OrchardCore.Flows/Scripts/flows.edit.js" at="Foot" depends-on="admin"></script>
+<style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
+<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
 
 <ul class="nav nav-tabs flex-column flex-md-row mb-3" role="tablist">
     <li class="nav-item pr-md-2">
