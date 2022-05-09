@@ -43,6 +43,7 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         public string[] Prefixes { get; set; } = Array.Empty<string>();
         public string[] ContentTypes { get; set; } = Array.Empty<string>();
+        public string[] ContentItems { get; set; } = Array.Empty<string>();
 
         public IEnumerable<ContentTypeDefinition> CookieContentTypes { get; set; }
 
