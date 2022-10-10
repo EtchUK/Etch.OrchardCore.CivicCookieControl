@@ -19,6 +19,19 @@
 <style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.min.css" debug-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
 <style asp-src="~/OrchardCore.Flows/Styles/flows.edit.min.css" debug-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
 
+<script asp-src="https://vuejs.org/js/vue.min.js" debug-src="https://vuejs.org/js/vue.js" asp-name="vuejs"
+        at="Foot"></script>
+<script asp-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.min.js"
+        debug-src="https://cdn.jsdelivr.net/sortable/1.4.2/Sortable.js" asp-name="sortable" at="Foot"></script>
+<script asp-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.min.js"
+        debug-src="https://cdnjs.cloudflare.com/ajax/libs/Vue.Draggable/2.14.1/vuedraggable.js" asp-name="vuedraggable"
+        depends-on="vuejs, sortable" at="Foot"></script>
+
+<script asp-src="~/Etch.OrchardCore.Fields/Scripts/values/admin.js" asp-name="values" depends-on="jquery" at="Foot"></script>
+<script at="Foot">
+    initializeValuesEditor(document.getElementById('civic-necessary-cookies'));
+</script>
+
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item pe-md-2">
         <a class="nav-item nav-link active" href="#tab-license" data-bs-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
@@ -195,7 +208,41 @@
             </div>
         </div>
 
-        <h5>@T["Cookies"] <span class="hint">@T["— Collection of cookies used on the site."]</span></h5>
+        <div class="mb-3">
+            <label asp-for="NecessaryCookies"><h5>Necessary Cookies</h5></label>
+            <p class="hint">@T["This is a list of cookies names necessary for your website's core functionality."]</p>
+
+            <div id="civic-necessary-cookies" data-for="@Html.IdFor(m => m.NecessaryCookies)" asp-validation-class-for="NecessaryCookies">
+                <input type="hidden" asp-for="NecessaryCookies" :value="value" data-init="@Model.NecessaryCookies">
+
+                <div class="form-inline mb-3">
+                    <div class="mb-3 me-3 w-100" style="max-width: 300px;">
+                        <label for="@Html.IdFor(m => m.NecessaryCookies)_NewValue" class="sr-only">@T["New Value"]</label>
+                        <input type="text" class="form-control w-100" id="@Html.IdFor(m => m.NecessaryCookies)_NewValue" placeholder="@(T["Enter name of cookie"])" v-model="newValue" v-on:keydown.enter.prevent="add">
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" v-on:click="add">@T["Add"]</button>
+                </div>
+
+                <draggable tag="ul" class="list-group" v-model="items" handle=".handle">
+                    <li v-for="(item, index) in items" class="list-group-item">
+                        <div class="d-flex">
+                            <div class="w-100 text-left align-self-center">
+                                {{item}}
+                            </div>
+                            <div class="flex-shrink-1 text-right align-self-center">
+                                <button v-on:click="remove(index)" class="btn btn-danger btn-sm" type="button">
+                                    <span class="fa fa-trash-alt"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                </draggable>
+
+                <p v-if="!hasValues" class="hint">@T["Currently no necessary cookies."]</p>
+            </div>
+        </div>
+
+        <h5>@T["Optional Cookies"] <span class="hint">@T["— Collection of cookies used on the site."]</span></h5>
 
         <div class="mb-3">
             <div    id="@widgetTemplatePlaceholderId" 

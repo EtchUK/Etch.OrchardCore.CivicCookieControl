@@ -49,6 +49,8 @@ namespace Etch.OrchardCore.CivicCookieControl.ViewModels
 
         public bool Subdomains { get; set; }
 
+        public string NecessaryCookies { get; set; }
+
         #endregion
 
         #region Statement

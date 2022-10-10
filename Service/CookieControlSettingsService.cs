@@ -3,6 +3,7 @@ using Etch.OrchardCore.CivicCookieControl.Settings;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentManagement;
+using System;
 using System.Collections.Generic;
 
 namespace Etch.OrchardCore.CivicCookieControl.Service
@@ -32,6 +33,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Service
             {
                 ["apiKey"] = settings.ApiKey,
                 ["product"] = settings.Product,
+                ["necessaryCookies"] = JArray.FromObject(settings.NecessaryCookies ?? Array.Empty<string>()),
                 ["initialState"] = settings.InitialState,
                 ["notifyOnce"] = settings.NotifyOnce,
                 ["rejectButton"] = settings.RejectButton,
