@@ -8,42 +8,41 @@
 @inject OrchardCore.ContentManagement.Metadata.IContentDefinitionManager ContentDefinitionManager
 @inject OrchardCore.ContentManagement.Display.IContentItemDisplayManager ContentItemDisplayManager
 
-@{ var widgetTemplatePlaceholderId = Html.Id("widgetTemplatePlaceholder"); }
+@{ 
+    var widgetTemplatePlaceholderId = Html.Id("widgetTemplatePlaceholder");
+    var htmlFieldPrefix = ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix;
+}
 
 <script asp-name="jQuery-ui" at="Foot"></script>
 
-<script asp-src="~/Etch.OrchardCore.AdminTheme/Scripts/flows.edit.js" at="Foot" depends-on="admin" asp-append-version="true"></script>
-<style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.min.css"
-       debug-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
-<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.css"
-       debug-src="~/OrchardCore.Flows/Styles/flows.edit.min.css"></style>
-<style asp-src="~/Etch.OrchardCore.AdminTheme/Styles/flows.edit.css" asp-append-version="true"></style>
-<script asp-src="~/Etch.OrchardCore.AdminTheme/Scripts/widget-picker.js" at="Foot" depends-on="admin" asp-append-version="true"></script>
+<script asp-src="~/OrchardCore.Flows/Scripts/flows.edit.min.js" debug-src="~/OrchardCore.Flows/Scripts/flows.edit.js" at="Foot" depends-on="admin"></script>
+<style asp-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.min.css" debug-src="~/OrchardCore.Widgets/Styles/widgetslist.edit.css"></style>
+<style asp-src="~/OrchardCore.Flows/Styles/flows.edit.min.css" debug-src="~/OrchardCore.Flows/Styles/flows.edit.css"></style>
 
-<ul class="nav nav-tabs flex-column flex-md-row" role="tablist">
-    <li class="nav-item pr-md-2">
-        <a class="nav-item nav-link active" href="#tab-license" data-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link active" href="#tab-license" data-bs-toggle="tab" role="tab" aria-controls="tab-license" aria-selected="false">@T["License"]</a>
     </li>
-    <li class="nav-item pr-md-2">
-        <a class="nav-item nav-link" href="#tab-behaviour" data-toggle="tab" role="tab" aria-controls="tab-behaviour" aria-selected="false">@T["Behaviour"]</a>
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link" href="#tab-behaviour" data-bs-toggle="tab" role="tab" aria-controls="tab-behaviour" aria-selected="false">@T["Behaviour"]</a>
     </li>
-    <li class="nav-item pr-md-2">
-        <a class="nav-item nav-link" href="#tab-text" data-toggle="tab" role="tab" aria-controls="tab-text" aria-selected="false">@T["Text"]</a>
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link" href="#tab-text" data-bs-toggle="tab" role="tab" aria-controls="tab-text" aria-selected="false">@T["Text"]</a>
     </li>
-    <li class="nav-item pr-md-2">
-        <a class="nav-item nav-link" href="#tab-cookies" data-toggle="tab" role="tab" aria-controls="tab-cookies" aria-selected="false">@T["Cookies"]</a>
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link" href="#tab-cookies" data-bs-toggle="tab" role="tab" aria-controls="tab-cookies" aria-selected="false">@T["Cookies"]</a>
     </li>
-    <li class="nav-item pr-md-2">
-        <a class="nav-item nav-link" href="#tab-statement" data-toggle="tab" role="tab" aria-controls="tab-statement" aria-selected="false">@T["Statement"]</a>
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link" href="#tab-statement" data-bs-toggle="tab" role="tab" aria-controls="tab-statement" aria-selected="false">@T["Statement"]</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-item nav-link" href="#tab-appearance" data-toggle="tab" role="tab" aria-controls="tab-appearance" aria-selected="false">@T["Appearance"]</a>
+    <li class="nav-item pe-md-2">
+        <a class="nav-item nav-link" href="#tab-appearance" data-bs-toggle="tab" role="tab" aria-controls="tab-appearance" aria-selected="false">@T["Appearance"]</a>
     </li>
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade show active" id="tab-license">
-        <div class="form-group row" asp-validation-class-for="ApiKey">
+        <div class="mb-3 row" asp-validation-class-for="ApiKey">
             <div class="col-lg">
                 <label asp-for="ApiKey">@T["API Key"]</label>
                 <input asp-for="ApiKey" class="form-control" autocomplete="off" />
@@ -52,7 +51,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="Product">
+        <div class="mb-3 row" asp-validation-class-for="Product">
             <div class="col-lg">
                 <label asp-for="Product">@T["Product"]</label>
                 <select asp-for="Product" class="form-control col-sm-6">
@@ -68,7 +67,7 @@
     </div>
 
     <div class="tab-pane fade" id="tab-behaviour">
-        <div class="form-group row" asp-validation-class-for="InitialState">
+        <div class="mb-3 row" asp-validation-class-for="InitialState">
             <div class="col-lg">
                 <label asp-for="InitialState">@T["Initial State"]</label>
                 <select asp-for="InitialState" class="form-control col-sm-6">
@@ -84,27 +83,27 @@
             </div>
         </div>
 
-        <div class="form-group" asp-validation-class-for="NotifyOnce">
+        <div class="mb-3" asp-validation-class-for="NotifyOnce">
             <label>Notify Once</label>
-            <div class="custom-control custom-checkbox">
-                <input asp-for="NotifyOnce" type="checkbox" class="custom-control-input" checked="@Model.NotifyOnce" />
-                <label class="custom-control-label" asp-for="NotifyOnce">
+            <div class="form-check">
+                <input asp-for="NotifyOnce" type="checkbox" class="form-check-input" checked="@Model.NotifyOnce" />
+                <label class="form-check-label" asp-for="NotifyOnce">
                     <span class="hint">— Determines whether the module only shows its initial state once, or if it continues to replay on subsequent page loads until the user has directly interacted with it.</span>
                 </label>
             </div>
         </div>
 
-        <div class="form-group" asp-validation-class-for="RejectButton">
+        <div class="mb-3" asp-validation-class-for="RejectButton">
             <label>Reject Button</label>
-            <div class="custom-control custom-checkbox">
-                <input asp-for="RejectButton" type="checkbox" class="custom-control-input" checked="@Model.RejectButton" />
-                <label class="custom-control-label" asp-for="RejectButton">
+            <div class="form-check">
+                <input asp-for="RejectButton" type="checkbox" class="form-check-input" checked="@Model.RejectButton" />
+                <label class="form-check-label" asp-for="RejectButton">
                     <span class="hint">— Determines whether the module shows a reject button alongside the accept button on the notification bar, or alongside the 'accept recommended settings' button when the panel is open.</span>
                 </label>
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="AcceptBehaviour">
+        <div class="mb-3 row" asp-validation-class-for="AcceptBehaviour">
             <div class="col-lg">
                 <label asp-for="AcceptBehaviour">@T["Accept Behaviour"]</label>
                 <select asp-for="AcceptBehaviour" class="form-control col-sm-6">
@@ -117,12 +116,12 @@
             </div>
         </div>
 
-        <div class="form-group" asp-validation-class-for="CloseOnGlobalChange">
+        <div class="mb-3" asp-validation-class-for="CloseOnGlobalChange">
             <label>Close on Global Change</label>
 
-            <div class="custom-control custom-checkbox">
-                <input asp-for="CloseOnGlobalChange" type="checkbox" class="custom-control-input" checked="@Model.CloseOnGlobalChange" />
-                <label class="custom-control-label" asp-for="CloseOnGlobalChange">
+            <div class="form-check">
+                <input asp-for="CloseOnGlobalChange" type="checkbox" class="form-check-input" checked="@Model.CloseOnGlobalChange" />
+                <label class="form-check-label" asp-for="CloseOnGlobalChange">
                     <span class="hint">— Determines whether Cookie Control main window will remain open when the user clicks on either of the accept or reject buttons.</span>
                 </label>
             </div>
@@ -130,7 +129,7 @@
     </div>
 
     <div class="tab-pane fade" id="tab-text">
-        <div class="form-group row" asp-validation-class-for="Title">
+        <div class="mb-3 row" asp-validation-class-for="Title">
             <div class="col-lg">
                 <label asp-for="Title">@T["Title"]</label>
                 <input asp-for="Title" class="form-control" />
@@ -139,7 +138,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="Intro">
+        <div class="mb-3 row" asp-validation-class-for="Intro">
             <div class="col-lg">
                 <label asp-for="Intro">@T["Intro"]</label>
                 <textarea asp-for="Intro" rows="5" class="form-control"></textarea>
@@ -148,7 +147,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="NecessaryTitle">
+        <div class="mb-3 row" asp-validation-class-for="NecessaryTitle">
             <div class="col-lg">
                 <label asp-for="NecessaryTitle">@T["Necessary Title"]</label>
                 <input asp-for="NecessaryTitle" class="form-control" />
@@ -157,7 +156,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="NecessaryDescription">
+        <div class="mb-3 row" asp-validation-class-for="NecessaryDescription">
             <div class="col-lg">
                 <label asp-for="NecessaryDescription">@T["Necessary Description"]</label>
                 <textarea asp-for="NecessaryDescription" rows="5" class="form-control"></textarea>
@@ -166,7 +165,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="ThirdPartyTitle">
+        <div class="mb-3 row" asp-validation-class-for="ThirdPartyTitle">
             <div class="col-lg">
                 <label asp-for="ThirdPartyTitle">@T["Third Party Title"]</label>
                 <input asp-for="ThirdPartyTitle" class="form-control" />
@@ -175,7 +174,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="ThirdPartyDescription">
+        <div class="mb-3 row" asp-validation-class-for="ThirdPartyDescription">
             <div class="col-lg">
                 <label asp-for="ThirdPartyDescription">@T["Third Party Description"]</label>
                 <textarea asp-for="ThirdPartyDescription" rows="5" class="form-control"></textarea>
@@ -186,11 +185,11 @@
     </div>
 
     <div class="tab-pane fade" id="tab-cookies">
-        <div class="form-group" asp-validation-class-for="NotifyOnce">
+        <div class="mb-3" asp-validation-class-for="NotifyOnce">
             <label>Subdomains</label>
-            <div class="custom-control custom-checkbox">
-                <input asp-for="Subdomains" type="checkbox" class="custom-control-input" checked="@Model.Subdomains" />
-                <label class="custom-control-label" asp-for="Subdomains">
+            <div class="form-check">
+                <input asp-for="Subdomains" type="checkbox" class="form-check-input" checked="@Model.Subdomains" />
+                <label class="form-check-label" asp-for="Subdomains">
                     <span class="hint">— Determines whether Cookie Control's own cookie is saved to the top level domain, and therefore accessible on all sub domains, or disabled and saved only to the request host..</span>
                 </label>
             </div>
@@ -198,48 +197,58 @@
 
         <h5>@T["Cookies"] <span class="hint">@T["— Collection of cookies used on the site."]</span></h5>
 
-        <div class="form-group">
-            <div id="@widgetTemplatePlaceholderId" class="widget-template-placeholder widget-template-placeholder-cookies row mx-0" data-buildeditorurl="@Url.Action("BuildEditor", "Admin", new { area = "OrchardCore.Flows" })">
-                @{ var htmlFieldPrefix = this.ViewContext.ViewData.TemplateInfo.HtmlFieldPrefix; }
+        <div class="mb-3">
+            <div    id="@widgetTemplatePlaceholderId" 
+                    class="widget-template-placeholder widget-template-placeholder-cookies row mx-0"
+                    data-buildeditorurl="@Url.Action("BuildEditor", "Admin", new { area = "OrchardCore.Flows" })">
 
-                @foreach (var widget in Model.Cookies)
-                {
-                    //Create a Card Shape
-                    dynamic contentCard = await New.ContentCard(
-                        // FOR Updater
-                        CollectionShape: Model,
-                        //Shape Specific
-                        CollectionShapeType: nameof(BagPart),
-                        ContentItem: widget,
-                        BuildEditor: true,
-                        //Card Specific Properties
-                        TargetId: widgetTemplatePlaceholderId,
-                        Inline: false,
-                        CanMove: true,
-                        CanDelete: true,
-                        //Input hidden
-                        //Prefixes
-                        PrefixValue: widget.ContentItemId,
-                        HtmlFieldPrefix: htmlFieldPrefix,
-                        PrefixesId: Html.IdFor(x => x.Prefixes),
-                        PrefixesName: Html.NameFor(x => x.Prefixes),
-                        //Content Types
-                        ContentTypesId: Html.IdFor(x => x.ContentTypes),
-                        ContentTypesName: Html.NameFor(x => x.ContentTypes)
-                    );
+                @{
+                    var index = 0;
 
-                    @await DisplayAsync(contentCard)}
+                    foreach (var widget in Model.Cookies)
+                    {
+                        //Create a Card Shape
+                        dynamic contentCard = await New.ContentCard(
+                            // FOR Updater
+                            CollectionShape: Model,
+                            //Shape Specific
+                            CollectionShapeType: nameof(BagPart),
+                            ContentItem: widget,
+                            BuildEditor: true,
+                            //Card Specific Properties
+                            TargetId: widgetTemplatePlaceholderId,
+                            Inline: false,
+                            CanMove: true,
+                            CanDelete: true,
+                            //Input hidden
+                            //Prefixes
+                            PrefixValue: htmlFieldPrefix + '-' + (index++).ToString(),
+                            HtmlFieldPrefix: htmlFieldPrefix,
+                            PrefixesId: Html.IdFor(x => x.Prefixes),
+                            PrefixesName: Html.NameFor(x => x.Prefixes),
+                            //Content Types
+                            ContentTypesId: Html.IdFor(x => x.ContentTypes),
+                            ContentTypesName: Html.NameFor(x => x.ContentTypes),
+                            //Content Items
+                            ContentItemsId: Html.IdFor(x => x.ContentItems),
+                            ContentItemsName: Html.NameFor(x => x.ContentItems)
+                        );
+
+                        @await DisplayAsync(contentCard)
+                    }
+                }
             </div>
 
             <div class="btn-group">
-                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @T["Add Cookie"]
                 </button>
                 <div class="dropdown-menu">
                     @foreach (var type in Model.CookieContentTypes)
                     {
-                        <a class="dropdown-item add-widget  btn-sm"
+                        <a class="dropdown-item add-widget btn-sm"
                            data-target-id="@widgetTemplatePlaceholderId"
+                           data-html-field-prefix="@htmlFieldPrefix"
                            data-prefixes-name="@Html.NameFor(x => x.Prefixes)"
                            data-contenttypes-name="@Html.NameFor(x => x.ContentTypes)"
                            data-contentitems-name="@Html.NameFor(x => x.ContentItems)"
@@ -250,6 +259,19 @@
                            href="javascript:;">@type.DisplayName</a>}
                 </div>
             </div>
+
+            @* Rendered only once per type to initialize the scripts its editor will need *@
+            @foreach (var type in Model.CookieContentTypes)
+            {
+                @if (Context.Items["CivicCookieControlCookies.Edit:" + type.Name] == null)
+                {
+                    Context.Items["CivicCookieControlCookies.Edit:" + type.Name] = new object();
+
+                    // Render a mock widget so that its resources are included in the page
+                    var contentItem = await ContentManager.NewAsync(type.Name);
+                    await DisplayAsync(await ContentItemDisplayManager.BuildEditorAsync(contentItem, Model.Updater, true, "", Guid.NewGuid().ToString("n")));
+                }
+            }
 
             <script at="Foot">
             @*Only apply sortable if element is present in dom, do not call sortable on scripts for mock widgets *@
@@ -305,7 +327,7 @@
     <div class="tab-pane fade" id="tab-statement">
         <p class="hint">@T["Statement will only show if all fields have a value."]</p>
 
-        <div class="form-group row" asp-validation-class-for="StatementName">
+        <div class="mb-3 row" asp-validation-class-for="StatementName">
             <div class="col-lg">
                 <label asp-for="StatementName">@T["Name"]</label>
                 <input asp-for="StatementName" class="form-control" />
@@ -314,7 +336,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="StatementDescription">
+        <div class="mb-3 row" asp-validation-class-for="StatementDescription">
             <div class="col-lg">
                 <label asp-for="StatementDescription">@T["Description"]</label>
                 <textarea asp-for="StatementDescription" class="form-control"></textarea>
@@ -323,7 +345,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="StatementUrl">
+        <div class="mb-3 row" asp-validation-class-for="StatementUrl">
             <div class="col-lg">
                 <label asp-for="StatementUrl">@T["URL"]</label>
                 <input asp-for="StatementUrl" class="form-control" />
@@ -332,7 +354,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="StatementUpdated">
+        <div class="mb-3 row" asp-validation-class-for="StatementUpdated">
             <div class="col-lg">
                 <label asp-for="StatementUpdated">@T["Updated"]</label>
                 <input asp-for="StatementUpdated" class="form-control" maxlength="10" placeholder="dd/mm/yyyy" />
@@ -343,7 +365,7 @@
     </div>
 
     <div class="tab-pane fade" id="tab-appearance">
-        <div class="form-group row" asp-validation-class-for="Layout">
+        <div class="mb-3 row" asp-validation-class-for="Layout">
             <div class="col-lg">
                 <label asp-for="Layout">@T["Layout"]</label>
                 <select asp-for="Layout" class="form-control col-sm-6">
@@ -356,7 +378,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="Position">
+        <div class="mb-3 row" asp-validation-class-for="Position">
             <div class="col-lg">
                 <label asp-for="Position">@T["Position"]</label>
                 <select asp-for="Position" class="form-control col-sm-6">
@@ -369,7 +391,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="Theme">
+        <div class="mb-3 row" asp-validation-class-for="Theme">
             <div class="col-lg">
                 <label asp-for="Theme">@T["Theme"]</label>
                 <select asp-for="Theme" class="form-control col-sm-6">
@@ -382,7 +404,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="ToggleType">
+        <div class="mb-3 row" asp-validation-class-for="ToggleType">
             <div class="col-lg">
                 <label asp-for="ToggleType">@T["Toggle Type"]</label>
                 <select asp-for="ToggleType" class="form-control col-sm-6">
@@ -395,7 +417,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="CloseStyle">
+        <div class="mb-3 row" asp-validation-class-for="CloseStyle">
             <div class="col-lg">
                 <label asp-for="CloseStyle">@T["Close Style"]</label>
                 <select asp-for="CloseStyle" class="form-control col-sm-6">
@@ -409,7 +431,7 @@
             </div>
         </div>
 
-        <div class="form-group row" asp-validation-class-for="SettingsStyle">
+        <div class="mb-3 row" asp-validation-class-for="SettingsStyle">
             <div class="col-lg">
                 <label asp-for="SettingsStyle">@T["Settings Style"]</label>
                 <select asp-for="SettingsStyle" class="form-control col-sm-6">
