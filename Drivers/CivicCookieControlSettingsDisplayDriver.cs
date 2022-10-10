@@ -1,9 +1,8 @@
-﻿using Etch.OrchardCore.CivicCookieControl.Options;
-using Etch.OrchardCore.CivicCookieControl.Settings;
+﻿using Etch.OrchardCore.CivicCookieControl.Settings;
 using Etch.OrchardCore.CivicCookieControl.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Display;
 using OrchardCore.ContentManagement.Metadata;
@@ -12,6 +11,7 @@ using OrchardCore.DisplayManagement.Entities;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.DisplayManagement.Views;
 using OrchardCore.Settings;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -61,6 +61,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                 model.ThirdPartyTitle = settings.ThirdPartyTitle;
                 model.ThirdPartyDescription = settings.ThirdPartyDescription;
 
+                model.NecessaryCookies = JsonConvert.SerializeObject(settings.NecessaryCookies);
                 model.Cookies = settings.Cookies;
                 model.Subdomains = settings.Subdomains;
 
@@ -127,6 +128,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Drivers
                     settings.SettingsStyle = model.SettingsStyle;
 
                     settings.Subdomains = model.Subdomains;
+                    settings.NecessaryCookies = JsonConvert.DeserializeObject<List<string>>(model.NecessaryCookies);
                 }
 
                 settings.Cookies.Clear();
