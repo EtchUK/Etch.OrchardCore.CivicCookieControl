@@ -50,7 +50,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
             await next.Invoke();
         }
 
-        private bool ShouldIncludeCivic(ResultExecutingContext context)
+        private static bool ShouldIncludeCivic(ResultExecutingContext context)
         {
             return (context.Result is ViewResult || context.Result is PageResult) &&
                 !AdminAttribute.IsApplied(context.HttpContext) &&
