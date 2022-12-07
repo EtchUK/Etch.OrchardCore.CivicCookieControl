@@ -29,7 +29,7 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
 
         public async Task OnResultExecutionAsync(ResultExecutingContext context, ResultExecutionDelegate next)
         {
-            if ((context.Result is ViewResult || context.Result is PageResult) && !AdminAttribute.IsApplied(context.HttpContext))
+            if (ShouldIncludeCivic(context))
             {
                 if (_scriptsCache == null)
                 {
@@ -48,6 +48,13 @@ namespace Etch.OrchardCore.CivicCookieControl.Filters
             }
 
             await next.Invoke();
+        }
+
+        private bool ShouldIncludeCivic(ResultExecutingContext context)
+        {
+            return (context.Result is ViewResult || context.Result is PageResult) &&
+                !AdminAttribute.IsApplied(context.HttpContext) &&
+                !context.HttpContext.Request.Query.ContainsKey("ignore-civic");
         }
     }
 }
