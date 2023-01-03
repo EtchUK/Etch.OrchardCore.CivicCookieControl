@@ -9,12 +9,7 @@ using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
-using OrchardCore.Media.Fields;
-using OrchardCore.Media.Settings;
-using OrchardCore.Recipes.Services;
 using OrchardCore.Title.Models;
-using System.Globalization;
-using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.CivicCookieControl
 {
