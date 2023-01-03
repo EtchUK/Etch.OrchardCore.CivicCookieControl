@@ -1,0 +1,209 @@
+{
+  "BagPart": [
+    {
+      "place": "-",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    }
+  ],
+  "BagPart_Edit": [
+    {
+      "place": "Parts#Cookies:35",
+      "differentiator": "OptionalCookies"
+    }
+  ],
+  "BooleanField": [
+    {
+      "place": "-",
+      "contentType": [ "CivicCookieControl" ]
+    }
+  ],
+  "BooleanField_Edit": [
+    {
+      "place": "Parts#Behaviour:11",
+      "differentiator": "CivicCookieControl-NotifyOnce",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Behaviour:12",
+      "differentiator": "CivicCookieControl-RejectButton",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Behaviour:14",
+      "differentiator": "CivicCookieControl-CloseOnGlobalChange",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Cookies:30",
+      "differentiator": "CivicCookieControl-Subdomains",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    }
+  ],
+  "DateField": [
+    {
+      "place": "-",
+      "contentType": [ "CivicCookieControl" ]
+    }
+  ],
+  "DateField_Edit": [
+    {
+      "place": "Parts#Statement:43",
+      "differentiator": "CivicCookieControl-StatementUpdated",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    }
+  ],
+  "TextField": [
+    {
+      "place": "-",
+      "contentType": [ "CivicCookieControl" ]
+    }
+  ],
+  "TextField_Edit": [
+    {
+      "place": "Parts#Behaviour:10",
+      "differentiator": "CivicCookieControl-InitialState",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Behaviour:13",
+      "differentiator": "CivicCookieControl-AcceptBehaviour",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:20",
+      "differentiator": "CivicCookieControl-Title",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:21",
+      "differentiator": "CivicCookieControl-Intro",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:22",
+      "differentiator": "CivicCookieControl-NecessaryTitle",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:23",
+      "differentiator": "CivicCookieControl-NecessaryDescription",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:24",
+      "differentiator": "CivicCookieControl-ThirdPartyTitle",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:25",
+      "differentiator": "CivicCookieControl-ThirdPartyDescription",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Statement:40",
+      "differentiator": "CivicCookieControl-StatementName",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Statement:41",
+      "differentiator": "CivicCookieControl-StatementDescription",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Statement:42",
+      "differentiator": "CivicCookieControl-StatementUrl",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:50",
+      "differentiator": "CivicCookieControl-Layout",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:51",
+      "differentiator": "CivicCookieControl-Position",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:52",
+      "differentiator": "CivicCookieControl-Theme",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:53",
+      "differentiator": "CivicCookieControl-ToggleType",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:54",
+      "differentiator": "CivicCookieControl-CloseStyle",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Appearance:55",
+      "differentiator": "CivicCookieControl-SettingsStyle",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    }
+  ],
+  "ValuesField": [
+    {
+      "place": "-",
+      "contentType": [ "CivicCookieControl" ]
+    }
+  ],
+  "ValuesField_Edit": [
+    {
+      "place": "Parts#Cookies:31",
+      "differentiator": "CivicCookieControl-NecessaryCookies",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    }
+  ]
+}
