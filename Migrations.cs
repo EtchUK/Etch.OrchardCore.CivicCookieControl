@@ -34,9 +34,9 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         public int Create()
         {
-            //await _recipeMigrator.ExecuteAsync("create.recipe.json", this);
+            UpdateFrom1();
 
-            return 1;
+            return 2;
         }
 
         public int UpdateFrom1()
