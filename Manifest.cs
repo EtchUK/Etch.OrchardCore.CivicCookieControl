@@ -12,6 +12,7 @@ using OrchardCore.Modules.Manifest;
         "Etch.OrchardCore.Fields.Code",
         "Etch.OrchardCore.Fields.Values",
         "OrchardCore.ContentFields",
-        "OrchardCore.Flows"
+        "OrchardCore.Flows",
+        "OrchardCore.Title"
     }
 )]
