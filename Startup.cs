@@ -5,6 +5,8 @@ using Etch.OrchardCore.CivicCookieControl.Helpers;
 using Etch.OrchardCore.CivicCookieControl.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data.Migration;
 using OrchardCore.DisplayManagement.Handlers;
 using OrchardCore.Modules;
@@ -27,6 +29,9 @@ namespace Etch.OrchardCore.CivicCookieControl
             services.AddCookieType<FacebookPixelCookie>();
             services.AddCookieType<GoogleAnalyticsCookie>();
             services.AddCookieType<RawCookie>();
+
+            services.AddContentPart<Models.CivicCookieControl>()
+                .UseDisplayDriver<CivicCookieControlDisplayDriver>();
 
             services.Configure<MvcOptions>((options) =>
             {
