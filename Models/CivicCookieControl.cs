@@ -11,6 +11,9 @@ namespace Etch.OrchardCore.CivicCookieControl.Models
 {
     public class CivicCookieControl : ContentPart
     {
+        private const string StatementPropertyName = "statement";
+        private const string TextPropertyName = "text";
+
         public TextField AcceptAllButtonLabel { get; set; }
         public TextField AcceptBehaviour { get; set; }
         public TextField ApiKey { get; set; }
@@ -66,35 +69,35 @@ namespace Etch.OrchardCore.CivicCookieControl.Models
                 ["subDomains"] = Subdomains.Value
             };
 
-            json["text"] = new JObject();
+            json[TextPropertyName] = new JObject();
 
-            AddString((JObject)json["text"], "title", Title.Text);
-            AddString((JObject)json["text"], "intro", Intro.Text);
-            AddString((JObject)json["text"], "necessaryTitle", NecessaryTitle.Text);
-            AddString((JObject)json["text"], "necessaryDescription", NecessaryDescription.Text);
-            AddString((JObject)json["text"], "thirdPartyTitle", ThirdPartyTitle.Text);
-            AddString((JObject)json["text"], "thirdPartyDescription", ThirdPartyDescription.Text);
-            AddString((JObject)json["text"], "acceptSettings", AcceptAllButtonLabel?.Text);
-            AddString((JObject)json["text"], "rejectSettings", RejectAllButtonLabel?.Text);
-            AddString((JObject)json["text"], "closeLabel", CloseButtonLabel?.Text);
-            AddString((JObject)json["text"], "on", OnToggleLabel?.Text);
-            AddString((JObject)json["text"], "off", OffToggleLabel?.Text);
-            AddString((JObject)json["text"], "settings", SettingsLabel?.Text);
-            AddString((JObject)json["text"], "notifyTitle", NotifyTitle?.Text);
-            AddString((JObject)json["text"], "notifyDescription", NotifyDescription?.Text);
-            AddString((JObject)json["text"], "accept", AcceptAllButtonLabel?.Text);
-            AddString((JObject)json["text"], "reject", RejectAllButtonLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "title", Title.Text);
+            AddString((JObject)json[TextPropertyName], "intro", Intro.Text);
+            AddString((JObject)json[TextPropertyName], "necessaryTitle", NecessaryTitle.Text);
+            AddString((JObject)json[TextPropertyName], "necessaryDescription", NecessaryDescription.Text);
+            AddString((JObject)json[TextPropertyName], "thirdPartyTitle", ThirdPartyTitle.Text);
+            AddString((JObject)json[TextPropertyName], "thirdPartyDescription", ThirdPartyDescription.Text);
+            AddString((JObject)json[TextPropertyName], "acceptSettings", AcceptAllButtonLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "rejectSettings", RejectAllButtonLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "closeLabel", CloseButtonLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "on", OnToggleLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "off", OffToggleLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "settings", SettingsLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "notifyTitle", NotifyTitle?.Text);
+            AddString((JObject)json[TextPropertyName], "notifyDescription", NotifyDescription?.Text);
+            AddString((JObject)json[TextPropertyName], "accept", AcceptAllButtonLabel?.Text);
+            AddString((JObject)json[TextPropertyName], "reject", RejectAllButtonLabel?.Text);
 
             json["optionalCookies"] = CreateOptionalCookies(ContentItem.Get<BagPart>("OptionalCookies")?.ContentItems ?? new List<ContentItem>());
 
             if (HasStatement)
             {
-                json["statement"] = new JObject();
+                json[StatementPropertyName] = new JObject();
 
-                AddString((JObject)json["statement"], "description", StatementDescription.Text);
-                AddString((JObject)json["statement"], "name", StatementName.Text);
-                AddString((JObject)json["statement"], "url", StatementUrl.Text);
-                AddString((JObject)json["statement"], "updated", StatementUpdated.Value.Value.ToString("dd/MM/yyyy"));
+                AddString((JObject)json[StatementPropertyName], "description", StatementDescription.Text);
+                AddString((JObject)json[StatementPropertyName], "name", StatementName.Text);
+                AddString((JObject)json[StatementPropertyName], "url", StatementUrl.Text);
+                AddString((JObject)json[StatementPropertyName], "updated", StatementUpdated.Value.Value.ToString("dd/MM/yyyy"));
             }
 
             return json.ToString();
