@@ -128,6 +128,62 @@
       ]
     },
     {
+      "place": "Parts#Text:26",
+      "differentiator": "CivicCookieControl-NotifyTitle",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Text:27",
+      "differentiator": "CivicCookieControl-NotifyDescription",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:25",
+      "differentiator": "CivicCookieControl-AcceptAllButtonLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:26",
+      "differentiator": "CivicCookieControl-RejectAllButtonLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:27",
+      "differentiator": "CivicCookieControl-CloseButtonLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:28",
+      "differentiator": "CivicCookieControl-OnToggleLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:29",
+      "differentiator": "CivicCookieControl-OffToggleLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
+      "place": "Parts#Labels:30",
+      "differentiator": "CivicCookieControl-SettingsLabel",
+      "contentType": [
+        "CivicCookieControl"
+      ]
+    },
+    {
       "place": "Parts#Statement:40",
       "differentiator": "CivicCookieControl-StatementName",
       "contentType": [

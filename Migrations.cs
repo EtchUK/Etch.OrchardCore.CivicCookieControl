@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.Fields.Code.Fields;
+using Etch.OrchardCore.Fields.Code.Fields;
 using Etch.OrchardCore.Fields.Code.Settings;
 using Etch.OrchardCore.Fields.Values.Fields;
 using Etch.OrchardCore.Fields.Values.Settings;
@@ -594,6 +594,80 @@ namespace Etch.OrchardCore.CivicCookieControl
                     .WithPosition("1")));
 
             return 2;
+        }
+
+        public int UpdateFrom2()
+        {
+            _contentDefinitionManager.AlterPartDefinition("CivicCookieControl", builder => builder
+                .WithField(nameof(Models.CivicCookieControl.AcceptAllButtonLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Accept All Button Label")
+                    .WithPosition("14")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Text used within the general, affirmative button for opting into all available options."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.RejectAllButtonLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Reject All Button Label")
+                    .WithPosition("15")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "Text used within the general, affirmative button for opting into all available options."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.CloseButtonLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Close Button Label")
+                    .WithPosition("16")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The text used to describe the control button to dismiss Cookie Control. Depending on close style this property may only be read by screen readers."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.OnToggleLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("On Toggle Label")
+                    .WithPosition("17")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The descriptive text use on the preference control to indicate the user has consented."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.OffToggleLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Off Toggle Label")
+                    .WithPosition("18")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The descriptive text use on the preference control to indicate the user has not consented."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.SettingsLabel), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Settings Button Label")
+                    .WithPosition("19")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Hint = "The text used within the control button to open the main preference panel."
+                    }))
+                .WithField(nameof(Models.CivicCookieControl.NotifyTitle), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Notify Title")
+                    .WithPosition("14")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = false,
+                        Hint = "Heading text used to announce the use of cookies for initial displays such as notify."
+                    }))
+                 .WithField(nameof(Models.CivicCookieControl.NotifyDescription), field => field
+                    .OfType(nameof(TextField))
+                    .WithDisplayName("Notify Description")
+                    .WithEditor("TextArea")
+                    .WithPosition("15")
+                    .WithSettings(new TextFieldSettings
+                    {
+                        Required = false,
+                        Hint = "Main body text used to describe the use of cookies for initial displays such as notify."
+                    })));
+
+            return 3;
         }
 
         #endregion
