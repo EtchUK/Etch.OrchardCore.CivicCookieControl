@@ -15,6 +15,10 @@ namespace Etch.OrchardCore.CivicCookieControl
 {
     public class Migrations : DataMigration
     {
+        private const string RawCookieContentTypeName = "RawCookie";
+        private const string PredefinedListEditor = "PredefinedList";
+        private const string TextAreaEditor = "TextArea";
+
         #region Dependencies
 
         private readonly IContentDefinitionManager _contentDefinitionManager;
@@ -41,7 +45,7 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         public int UpdateFrom1()
         {
-            _contentDefinitionManager.AlterPartDefinition("CivicCookieControl", builder => builder
+            _contentDefinitionManager.AlterPartDefinition(nameof(Models.CivicCookieControl), builder => builder
                 .WithField("ApiKey", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("API Key")
@@ -54,7 +58,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                 .WithField("Product", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Product")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("2")
                     .WithSettings(new TextFieldSettings
                     {
@@ -92,7 +96,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                 .WithField("InitialState", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Initial State")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("3")
                     .WithSettings(new TextFieldSettings
                     {
@@ -158,7 +162,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                 .WithField("AcceptBehaviour", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Accept Behaviour")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("6")
                     .WithSettings(new TextFieldSettings
                     {
@@ -210,7 +214,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("Intro", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Intro")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("9")
                     .WithSettings(new TextFieldSettings
                     {
@@ -229,7 +233,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("NecessaryDescription", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Necessary Description")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("11")
                     .WithSettings(new TextFieldSettings
                     {
@@ -248,7 +252,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("ThirdPartyDescription", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Third Party Description")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("13")
                     .WithSettings(new TextFieldSettings
                     {
@@ -285,7 +289,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("StatementDescription", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Statement Description")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("15")
                     .WithSettings(new TextFieldSettings
                     {
@@ -313,7 +317,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("Layout", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Layout")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("18")
                     .WithSettings(new TextFieldSettings
                     {
@@ -346,7 +350,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("Position", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Position")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("19")
                     .WithSettings(new TextFieldSettings
                     {
@@ -379,7 +383,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("Theme", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Theme")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("20")
                     .WithSettings(new TextFieldSettings
                     {
@@ -412,7 +416,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("ToggleType", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Toggle Type")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("21")
                     .WithSettings(new TextFieldSettings
                     {
@@ -445,7 +449,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("CloseStyle", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Close Style")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("22")
                     .WithSettings(new TextFieldSettings
                     {
@@ -483,7 +487,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField("SettingsStyle", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Settings Style")
-                    .WithEditor("PredefinedList")
+                    .WithEditor(PredefinedListEditor)
                     .WithPosition("23")
                     .WithSettings(new TextFieldSettings
                     {
@@ -515,7 +519,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     }))
                 );
 
-            _contentDefinitionManager.AlterTypeDefinition("CivicCookieControl", builder => builder
+            _contentDefinitionManager.AlterTypeDefinition(nameof(Models.CivicCookieControl), builder => builder
                 .Stereotype("Widget")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -524,7 +528,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     Icon = "cookie"
                 }))
                 .DisplayedAs("CIVIC Cookie Control")
-                .WithPart("CivicCookieControl", builder => builder
+                .WithPart(nameof(Models.CivicCookieControl), builder => builder
                     .WithPosition("1"))
                 .WithPart("OptionalCookies", nameof(BagPart), builder => builder
                     .WithPosition("2")
@@ -532,11 +536,11 @@ namespace Etch.OrchardCore.CivicCookieControl
                     .WithDescription("Collection of cookies used on the site.")
                     .WithSettings(new BagPartSettings
                     {
-                        ContainedContentTypes = new string[] { "RawCookie" }
+                        ContainedContentTypes = new string[] { RawCookieContentTypeName }
                     }))
                 );
 
-            _contentDefinitionManager.AlterPartDefinition("RawCookie", builder => builder
+            _contentDefinitionManager.AlterPartDefinition(RawCookieContentTypeName, builder => builder
                 .WithField("Name", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Name")
@@ -548,7 +552,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                 .WithField("Description", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Description")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("3")
                     .WithSettings(new TextFieldSettings
                     {
@@ -580,7 +584,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                         Language = "javascript"
                     })));
 
-            _contentDefinitionManager.AlterTypeDefinition("RawCookie", builder => builder
+            _contentDefinitionManager.AlterTypeDefinition(RawCookieContentTypeName, builder => builder
                 .MergeSettings(JObject.FromObject(new
                 {
                     Category = "Content",
@@ -590,7 +594,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                 .DisplayedAs("Raw Cookie")
                 .WithPart(nameof(TitlePart), builder => builder
                     .WithPosition("0"))
-                .WithPart("RawCookie", builder => builder
+                .WithPart(RawCookieContentTypeName, builder => builder
                     .WithPosition("1")));
 
             return 2;
@@ -598,7 +602,7 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         public int UpdateFrom2()
         {
-            _contentDefinitionManager.AlterPartDefinition("CivicCookieControl", builder => builder
+            _contentDefinitionManager.AlterPartDefinition(nameof(Models.CivicCookieControl), builder => builder
                 .WithField(nameof(Models.CivicCookieControl.AcceptAllButtonLabel), field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Accept All Button Label")
@@ -659,7 +663,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                  .WithField(nameof(Models.CivicCookieControl.NotifyDescription), field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Notify Description")
-                    .WithEditor("TextArea")
+                    .WithEditor(TextAreaEditor)
                     .WithPosition("15")
                     .WithSettings(new TextFieldSettings
                     {
