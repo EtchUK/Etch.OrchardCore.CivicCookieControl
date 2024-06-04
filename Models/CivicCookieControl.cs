@@ -1,4 +1,4 @@
-﻿using Etch.OrchardCore.Fields.Code.Fields;
+using Etch.OrchardCore.Fields.Code.Fields;
 using Etch.OrchardCore.Fields.Values.Fields;
 using Newtonsoft.Json.Linq;
 using OrchardCore.ContentFields.Fields;
@@ -11,8 +11,10 @@ namespace Etch.OrchardCore.CivicCookieControl.Models
 {
     public class CivicCookieControl : ContentPart
     {
+        public TextField AcceptAllButtonLabel { get; set; }
         public TextField AcceptBehaviour { get; set; }
         public TextField ApiKey { get; set; }
+        public TextField CloseButtonLabel { get; set; }
         public BooleanField CloseOnGlobalChange { get; set; }
         public TextField CloseStyle { get; set; }
         public TextField InitialState { get; set; }
@@ -21,10 +23,16 @@ namespace Etch.OrchardCore.CivicCookieControl.Models
         public ValuesField NecessaryCookies { get; set; }
         public TextField NecessaryDescription { get; set; }
         public TextField NecessaryTitle { get; set; }
+        public TextField NotifyDescription { get; set; }
         public BooleanField NotifyOnce { get; set; }
+        public TextField NotifyTitle { get; set; }
+        public TextField OffToggleLabel { get; set; }
+        public TextField OnToggleLabel { get; set; }
         public TextField Position { get; set; }
         public TextField Product { get; set; }
+        public TextField RejectAllButtonLabel { get; set; }
         public BooleanField RejectButton { get; set; }
+        public TextField SettingsLabel { get; set; }
         public TextField SettingsStyle { get; set; }
         public TextField StatementDescription { get; set; }
         public TextField StatementName { get; set; }
@@ -66,6 +74,16 @@ namespace Etch.OrchardCore.CivicCookieControl.Models
             AddString((JObject)json["text"], "necessaryDescription", NecessaryDescription.Text);
             AddString((JObject)json["text"], "thirdPartyTitle", ThirdPartyTitle.Text);
             AddString((JObject)json["text"], "thirdPartyDescription", ThirdPartyDescription.Text);
+            AddString((JObject)json["text"], "acceptSettings", AcceptAllButtonLabel?.Text);
+            AddString((JObject)json["text"], "rejectSettings", RejectAllButtonLabel?.Text);
+            AddString((JObject)json["text"], "closeLabel", CloseButtonLabel?.Text);
+            AddString((JObject)json["text"], "on", OnToggleLabel?.Text);
+            AddString((JObject)json["text"], "off", OffToggleLabel?.Text);
+            AddString((JObject)json["text"], "settings", SettingsLabel?.Text);
+            AddString((JObject)json["text"], "notifyTitle", NotifyTitle?.Text);
+            AddString((JObject)json["text"], "notifyDescription", NotifyDescription?.Text);
+            AddString((JObject)json["text"], "accept", AcceptAllButtonLabel?.Text);
+            AddString((JObject)json["text"], "reject", RejectAllButtonLabel?.Text);
 
             json["optionalCookies"] = CreateOptionalCookies(ContentItem.Get<BagPart>("OptionalCookies")?.ContentItems ?? new List<ContentItem>());
 
