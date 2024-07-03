@@ -36,16 +36,16 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         #region Migrations
 
-        public int Create()
+        public int CreateAsync()
         {
-            UpdateFrom1();
+            UpdateFrom1Async();
 
             return 2;
         }
 
-        public int UpdateFrom1()
+        public int UpdateFrom1Async()
         {
-            _contentDefinitionManager.AlterPartDefinition(nameof(Models.CivicCookieControl), builder => builder
+            _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .WithField("ApiKey", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("API Key")
@@ -519,7 +519,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     }))
                 );
 
-            _contentDefinitionManager.AlterTypeDefinition(nameof(Models.CivicCookieControl), builder => builder
+            _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .Stereotype("Widget")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -540,7 +540,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     }))
                 );
 
-            _contentDefinitionManager.AlterPartDefinition(RawCookieContentTypeName, builder => builder
+            _contentDefinitionManager.AlterPartDefinitionAsync(RawCookieContentTypeName, builder => builder
                 .WithField("Name", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Name")
@@ -584,7 +584,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                         Language = "javascript"
                     })));
 
-            _contentDefinitionManager.AlterTypeDefinition(RawCookieContentTypeName, builder => builder
+            _contentDefinitionManager.AlterTypeDefinitionAsync(RawCookieContentTypeName, builder => builder
                 .MergeSettings(JObject.FromObject(new
                 {
                     Category = "Content",
@@ -602,7 +602,7 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         public int UpdateFrom2()
         {
-            _contentDefinitionManager.AlterPartDefinition(nameof(Models.CivicCookieControl), builder => builder
+            _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .WithField(nameof(Models.CivicCookieControl.AcceptAllButtonLabel), field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Accept All Button Label")
