@@ -10,6 +10,7 @@ using OrchardCore.ContentManagement.Metadata.Settings;
 using OrchardCore.Data.Migration;
 using OrchardCore.Flows.Models;
 using OrchardCore.Title.Models;
+using System.Threading.Tasks;
 
 namespace Etch.OrchardCore.CivicCookieControl
 {
@@ -36,16 +37,16 @@ namespace Etch.OrchardCore.CivicCookieControl
 
         #region Migrations
 
-        public int CreateAsync()
+        public async Task<int> CreateAsync()
         {
-            UpdateFrom1Async();
+            await UpdateFrom1Async();
 
             return 2;
         }
 
-        public int UpdateFrom1Async()
+        public async Task<int> UpdateFrom1Async()
         {
-            _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .WithField("ApiKey", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("API Key")
@@ -519,7 +520,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     }))
                 );
 
-            _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .Stereotype("Widget")
                 .MergeSettings(JObject.FromObject(new
                 {
@@ -540,7 +541,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                     }))
                 );
 
-            _contentDefinitionManager.AlterPartDefinitionAsync(RawCookieContentTypeName, builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(RawCookieContentTypeName, builder => builder
                 .WithField("Name", field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Name")
@@ -584,7 +585,7 @@ namespace Etch.OrchardCore.CivicCookieControl
                         Language = "javascript"
                     })));
 
-            _contentDefinitionManager.AlterTypeDefinitionAsync(RawCookieContentTypeName, builder => builder
+            await _contentDefinitionManager.AlterTypeDefinitionAsync(RawCookieContentTypeName, builder => builder
                 .MergeSettings(JObject.FromObject(new
                 {
                     Category = "Content",
@@ -600,9 +601,9 @@ namespace Etch.OrchardCore.CivicCookieControl
             return 2;
         }
 
-        public int UpdateFrom2()
+        public async Task<int> UpdateFrom2Async()
         {
-            _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
+            await _contentDefinitionManager.AlterPartDefinitionAsync(nameof(Models.CivicCookieControl), builder => builder
                 .WithField(nameof(Models.CivicCookieControl.AcceptAllButtonLabel), field => field
                     .OfType(nameof(TextField))
                     .WithDisplayName("Accept All Button Label")
